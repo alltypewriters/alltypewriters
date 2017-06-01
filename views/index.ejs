@@ -22,22 +22,84 @@
     </style>
 </head>
 <body>
-<div class="container">
 
+
+
+<div class="col-sm-12">
+<div class="container">
     <div class="text-center">
         <h1 class="heading"> All Type Writers</h1>
+        
         <br><br>
         <img class="logo" src="assets/img/logo.jpg" alt="The image contains logo">
         <br><br>
-        <a href="#" class="btn btn-primary btn-m">Log in</a>
-        <a href="#" class="btn btn-danger btn-m">Sign up</a>
-        
-    </div>
-
+        <button type="button" class="btn btn-primary btn-m" data-toggle="modal" data-target="#modal-login">Log in</button>
+        <button type="button" class="btn btn-primary btn-m" data-toggle="modal" data-target="">Register</button>
+     <!-- show any messages that come back with authentication -->
+        <br><br>
+        <% if (message.length > 0) { %>
+                 <div class="alert alert-danger fade in"><%= message %></div>
+            <% } %>
 </div>
+
+<!-- MODAL -->
+  <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+          <h3 class="modal-title" id="modal-register-label">Login</h3>
+        </div>
+        <div class="modal-body">
+       
+
+          <form action="/login" method="post">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg">Login</button>
+    </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="assets/js/jquery-3.2.1.js"></script>
 <!-- New Inclusion of bootstrap.js because you are using bootstrap Modal -->
 <script src="bootstrap/js/bootstrap.js"></script>
-<script src="assets/js/login-modal.js"></script>
 </body>
 </html>
