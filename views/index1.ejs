@@ -1,0 +1,139 @@
+<!-- views/index.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css" type="text/css"> <!-- load bootstrap-theme css -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet">
+    <style>
+     
+        .heading{
+        font-family: 'Source Serif Pro', serif; 
+        color: black;
+        font-size: 80px;
+        }
+        .logo{
+            width: 20%;
+            height: 10%;
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<div class="col-sm-12">
+<div class="container">
+    <div class="text-center">
+        <h1 class="heading"> All Type Writers</h1>
+        
+        <br><br>
+        <img class="logo" src="assets/img/logo.jpg" alt="The image contains logo">
+        <br><br>
+        <button type="button" class="btn btn-link btn-m" data-toggle="modal" data-target="#modal-login">Log in</button>
+        <button type="button" class="btn btn-primary btn-m" data-toggle="modal" data-target="#modal-signup">Register</button>
+     <!-- show any messages that come back with authentication -->
+        <br><br>
+        <% if (message.length > 0) { %>
+                 <div class="alert alert-danger fade in"><%= message %></div>
+            <% } %>
+</div>
+
+<!-- MODAL -->
+  <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+          <h3 class="modal-title" id="modal-register-label">Login</h3>
+        </div>
+        <div class="modal-body">
+       
+
+          <form action="/login" method="post">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg">Login</button>
+    </form>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+          <h3 class="modal-title" id="modal-register-label">Register</h3>
+        </div>
+        <div class="modal-body">
+       
+
+          <form action="/signup" method="post">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg">Register</button>
+    </form>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="assets/js/jquery-3.2.1.js"></script>
+<!-- New Inclusion of bootstrap.js because you are using bootstrap Modal -->
+<script src="bootstrap/js/bootstrap.js"></script>
+</body>
+</html>
