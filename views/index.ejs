@@ -27,6 +27,7 @@
 </head>
 
 <body id="page-top" class="index">
+
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
     <!-- Navigation -->
@@ -70,7 +71,7 @@
                 <div class="col-lg-12">
                     <img class="img-responsive" src="index/img/profile.png" alt="">
                     <div class="intro-text">
-                        <h1 class="name">Start Bootstrap</h1>
+                        <h1 class="name">ALL TYPE WRITERS</h1>
                         <hr class="star-light">
                         <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
                     </div>
@@ -78,6 +79,7 @@
             </div>
         </div>
     </header>
+    
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
@@ -152,6 +154,27 @@
             </div>
         </div>
     </section>
+    <!--Modal Popup-->
+    <% if (message.length > 0) { %>
+    <div class="modal fade" id="modal-popup" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+          <h3 class="modal-title" id="modal-register-label">Please Note :)</h3>
+        </div>
+        <div class="modal-body">
+        
+                 <div class="alert alert-danger fade in"><%= message %></div>
+              
+
+        </div>
+      </div>
+    </div>  
+  </div> <% } %>   
     <!--Login-Modal-->
          <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
     <div class="modal-dialog">
@@ -163,8 +186,7 @@
                         </button>
           <h3 class="modal-title" id="modal-register-label">Login</h3>
         </div>
-        <div class="modal-body">
-       
+        <div class="modal-body">     
 
           <form action="/login" method="post">
         <div class="form-group">
@@ -176,7 +198,7 @@
             <input type="password" class="form-control" name="password">
         </div>
 
-        <button type="submit" class="btn btn-primary btn-m">Login</button>
+        <button type="submit" class="btn btn-primary btn-m" id="loginButton">Login</button>
     </form>
         </div>
       </div>
@@ -359,7 +381,7 @@
     </div>
 
     <!-- Portfolio Modals -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="portfolio-modal modal in" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
                 <div class="lr">
@@ -598,6 +620,20 @@
 
     <!-- Theme JavaScript -->
     <script src="index/js/freelancer.min.js"></script>
+    
+<script>
+$(document).ready(function () {
+
+    $('#modal-popup').modal('show');
+
+});
+   /* $("#loginButton").on("click", function(e) {
+    e.preventDefault();
+
+    // the rest of your code ...
+});*/
+</script>
+
 
 </body>
 
