@@ -5,8 +5,10 @@ module.exports = function(app, passport) {
     // HOME PAGE (with login links and register) ========
     // ==================================================
     app.get('/', function(req, res) {
-        res.render('index.ejs', { message: req.flash('loginMessage'),
-             message1: req.flash('signupMessage') });
+        res.render('index.ejs', {
+            message: req.flash('loginMessage'),
+            message1: req.flash('signupMessage')
+        });
     });
 
     // process the login form
@@ -22,7 +24,7 @@ module.exports = function(app, passport) {
     // SIGNUP ==============================
     // =====================================
     // show the signup form
-    
+
 
     // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
