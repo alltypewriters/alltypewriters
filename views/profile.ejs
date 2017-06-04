@@ -22,6 +22,11 @@
     <link href="index/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <style>
+    .img-profile {
+        border-radius: 50%;
+    }
+    </style>
 
 </head>
 
@@ -80,31 +85,23 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav" style="margin-left:0;">
+            <ul class="sidebar-nav" style="margin-left:5;">
                 <li class="sidebar-brand">
                     
                        <!-- <a href="#menu-toggle"  id="menu-toggle" style="margin-top:20px;float:right;" > <i class="fa fa-bars " style="font-size:20px !Important;" aria-hidden="true" aria-hidden="true"></i> -->
                     
-                </li>
+                </li>               
                 <li>
-                    <a href="#"></i> <span style="margin-left:10px;"><img src="<%=user.facebook.photo%>" alt=""></span>  </a>
+                    <a href="#"></i> <span style="margin-left:10px;"><img class="img-profile"src="<%=user.facebook.photo%>" alt="facebook-image here"></span>  </a>
                     
                 </li>
-                <li>
-                    <a href="#"></i> <span style="margin-left:10px;"> Section</span> </a>
+                 <br><br>
+                <li >
+                    <a href="#" style="color: white;"><span style="margin-left:25px;">About Me</span> </a>
                 </li>
                 <li>
-                    <a href="#"><span style="margin-left:10px;"> Section</span> </a>
-                </li>
-                <li>
-                    <a href="#"><span style="margin-left:10px;"> Section</span> </a>
-                </li>
-                <li>
-                    <a href="#"> <span style="margin-left:10px;">Section </span> </a>
-                </li>
-                <li>
-                    <a href="#"> <!--<i class="fa fa-comment-o" aria-hidden="true"> </i> --><span style="margin-left:10px;"> Section</span> </a>
-                </li>
+                    <a href="#" style="color: white"><span style="margin-left:25px;">My Stories</span> </a>
+                </li>                
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
