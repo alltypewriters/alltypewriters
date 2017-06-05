@@ -47,7 +47,11 @@ module.exports = function(app, passport) {
         });
     });
     
+    app.get('/profile/startastory',isLoggedIn,function(req, res){
+            res.render('editor.ejs')
 
+    });
+     
        // =====================================
     // FACEBOOK ROUTES =====================
     // =====================================

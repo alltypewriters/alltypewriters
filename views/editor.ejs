@@ -1,0 +1,150 @@
+<html>
+<head>
+    <title>All Type Writers</title>
+     <!-- Bootstrap Core CSS -->
+    
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" type="text/css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css" type="text/css"> <!-- load bootstrap-theme css -->
+    <link rel="stylesheet" href="/editor/formcss.css" type="text/css">
+    <!-- Include stylesheet for Text-Editor -->
+        <link href="https://cdn.quilljs.com/1.2.5/quill.snow.css" rel="stylesheet">
+</head>
+
+
+
+
+
+<body>
+
+<div class="container">
+	<div class="row">
+		<section>
+        <div class="wizard">
+            <div class="wizard-inner">
+                <div class="connecting-line"></div>
+                <ul class="nav nav-tabs" role="tablist">
+
+                    <li role="presentation" class="active">
+                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-folder-open"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="disabled">
+                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-picture"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-ok"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <form role="form">
+                <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="step1">
+                        <h3>Step 1</h3>
+                        <p><strong>Select a category</strong></p>
+                        <form action="/profile/startastory" method="post">
+                        <div class="form-group">
+                                <div class="radio">
+                                <label><input type="radio" name="category">Label 1</label> 
+                                </div>
+                                <div class="radio">
+                                <label><input type="radio" name="category">Label 2</label>
+                                </div>
+                                <div class="radio">
+                                <label><input type="radio" name="category">Label 3</label>
+                                </div>
+                        </div>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tab-pane" role="tabpanel" id="step2">
+                        <h3>Step 2</h3>
+                        <div class="form-group">
+                            <p>Add a title</p>
+                            <input type="text" class="form-control" name="title">
+                        </div>
+
+                        <ul class="list-inline pull-right"><br><br>
+                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="step3">
+                         <h3>Step 3</h3>
+                         <!--Text-Editor-->
+                            <div class="form-group">
+                                <!-- Create the editor container -->
+                                <div id="editor">
+                                <p>Hello World!</p>
+                                <p>Some initial <strong>bold</strong> text</p>
+                                <p><br></p>
+                                </div>
+                            </div>
+                            <ul class="list-inline pull-right">
+                            
+
+                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
+                        </ul>
+                    </div>
+                    </form>
+                    <div class="tab-pane" role="tabpanel" id="complete">
+                        <h3>Complete</h3>
+                        <p>You have successfully completed all steps.</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+    </section>
+   </div>
+</div>
+
+<!-- jQuery -->
+    
+    <script src="/assets/js/jquery-3.2.1.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <!--Form Javascript-->
+    <script src="/editor/form.js"></script> 
+
+
+    <!-- Text-Editor-->
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.2.5/quill.js"></script>
+
+    <!-- Initialize Quill editor -->
+        <script>
+            var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+    </script>
+
+
+</body>
+
+
+</html>
