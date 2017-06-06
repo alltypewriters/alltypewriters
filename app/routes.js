@@ -46,67 +46,79 @@ module.exports = function(app, passport) {
             user: req.user // get the user out of session and pass to template
         });
     });
-    
-    app.get('/profile/startastory',isLoggedIn,function(req, res){
-            res.render('editor.ejs')
+
+    // =====================================
+    // EDITOR SECTION ======================
+    // =====================================
+    // we will want this protected so you have to be logged in to visit
+    // we will use route middleware to verify this (the isLoggedIn function)
+
+    app.get('/profile/startastory', isLoggedIn, function(req, res) {
+        res.render('editor.ejs')
 
     });
+
+    // =====================================
+    // SCHEMA LOADED (story) ===============
+    // =====================================    
+
     var Story = require('./models/story');
 
     Story.createStory = function(newFeature, callback) {
-            newFeature.save(callback);
-        }
+        newFeature.save(callback);
+    }
 
+    // =====================================
+    // POST A NEW STORY ====================
+    // =====================================
+    // var Story = require('./models/story');
 
-    app.post('/profile/startastory',isLoggedIn,function(req, res){
-            var category= req.body.category;
-            var author= req.user.facebook.name;
-            var  title=req.body.title;
-            var body=delta;
-            var created_at= Date();
-            var newStory = new Story({
-                category: category,
-                title: title,
-                author: author,
-                body: body,
-                created_at: created_at
-            });
-            // save the user
+    app.post('/profile/startastory', function(req, res) {
+        var category = req.body.category;
+        var author = req.user.facebook.name;
+        var title = req.body.title;
+        var created_at = Date();
+        var newStory = new Story({
+            category: category,
+            title: title,
+            author: author,
+            created_at: created_at
+        });
+        // save the story
         newStory.save(function(err) {
-        if (err) throw err;
-
-        console.log('User created!');
-});
+            if (err) throw err;
+            console.log('Story Done!');
+        });
         res.redirect('/profile');
     });
-     
-       // =====================================
+
+    // =====================================
     // FACEBOOK ROUTES =====================
     // =====================================
     // route for facebook authentication and login
-    app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+    app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
 
     // handle the callback after facebook has authenticated the user
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
+            successRedirect: '/profile',
+            failureRedirect: '/'
         }));
 
- // =====================================
+    // =====================================
     // GOOGLE ROUTES =======================
     // =====================================
     // send to google to do the authentication
     // profile gets us their basic information including their name
     // email gets their emails
-    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+    app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
     // the callback after google has authenticated the user
     app.get('/auth/google/callback',
-            passport.authenticate('google', {
-                    successRedirect : '/profile',
-                    failureRedirect : '/'
-            }));
+        passport.authenticate('google', {
+            successRedirect: '/profile',
+            failureRedirect: '/'
+        }));
 
 
     // =====================================
@@ -117,6 +129,7 @@ module.exports = function(app, passport) {
         res.redirect('/');
     });
 };
+
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
 
