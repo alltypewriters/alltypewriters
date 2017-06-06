@@ -9,7 +9,7 @@
 6 silly lifecycle node-authentication@~prestart: no script for prestart, continuing
 7 info lifecycle node-authentication@~start: node-authentication@
 8 verbose lifecycle node-authentication@~start: unsafe-perm in lifecycle true
-9 verbose lifecycle node-authentication@~start: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\lenovo\Desktop\alltypewriters\node_modules\.bin;C:\Users\lenovo\AppData\Roaming\npm;C:\Program Files\nodejs\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk\bin;C:\Program Files\Git\cmd;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\Program Files\nodejs\;C:\Users\lenovo\AppData\Roaming\npm
+9 verbose lifecycle node-authentication@~start: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\lenovo\Desktop\alltypewriters\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk\bin;C:\Program Files\Git\cmd;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\Program Files\nodejs\;C:\Users\lenovo\AppData\Roaming\npm
 10 verbose lifecycle node-authentication@~start: CWD: C:\Users\lenovo\Desktop\alltypewriters
 11 silly lifecycle node-authentication@~start: Args: [ '/d /s /c', 'node server.js' ]
 12 silly lifecycle node-authentication@~start: Returned: code: 3221225786  signal: null

@@ -77,10 +77,12 @@ module.exports = function(app, passport) {
         var category = req.body.category;
         var author = req.user.facebook.name;
         var title = req.body.title;
+        var body=req.body.about;
         var created_at = Date();
         var newStory = new Story({
             category: category,
             title: title,
+            body: body,
             author: author,
             created_at: created_at
         });

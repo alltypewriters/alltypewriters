@@ -96,6 +96,7 @@
                          <!--Text-Editor-->
                             <div class="form-group">
                                 <!-- Create the editor container -->
+                               <input name="about" type="hidden">
                                 <div id="editor">
                                 <p>Hello World!</p>
                                 <p>Some initial <strong>bold</strong> text</p>
@@ -141,8 +142,67 @@
     <!-- Initialize Quill editor -->
         <script>
             var quill = new Quill('#editor', {
+  modules: {
+    toolbar: [
+      ['bold', 'italic'],
+      ['link', 'blockquote', 'code-block', 'image'],
+      [{ list: 'ordered' }, { list: 'bullet' }]
+    ]
+  },
+  placeholder: 'Compose an epic...',
             theme: 'snow'
         });
+
+            var form = document.querySelector('form');
+form.onsubmit = function() {
+  // Populate hidden form on submit
+  var about = document.querySelector('input[name=about]');
+  about.value = JSON.stringify(quill.getContents());
+  
+  console.log("Submitted", $(form).serialize(), $(form).serializeArray());
+  
+  // No back end to actually submit to!
+  alert('Open the console to see the submit data!')
+  return false;
+};
+
+
+$(document).ready(function() {
+
+    // process the form
+    $('form').submit(function(event) {
+
+        // get the form data
+        // there are many ways to get this data using jQuery (you can use the class or id also)
+        var formData = {
+            'category'           : $('input[name=category]').val(),
+            'title'             : $('input[name=title]').val(),
+            'body'               : $('input[name=about]').val()
+        };
+        // process the form
+        $.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url         : 'http://localhost:8080/profile/startastory', // the url where we want to POST
+            data        : formData, // our data object
+            dataType    : 'json', // what type of data do we expect back from the server
+                        encode          : true
+        })
+         // using the done promise callback
+            .done(function(data) {
+
+                // log data to the console so we can see
+                console.log(data); 
+
+                // here we will handle errors and validation messages
+            });
+
+        // stop the form from submitting the normal way and refreshing the page
+        event.preventDefault();
+    });
+
+});
+
+
     </script>
 
 
