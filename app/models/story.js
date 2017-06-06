@@ -1,15 +1,15 @@
 var mongoose = require('mongoose');
-var storySchema= mongoose.Schema({
-	category: String,
-	tags: [String],
-	title: String,
-	body: String,
-	author: String,
-	created_at : Date,
-	verified: Boolean,
-	likes : Number,
-	comments :[{ 
-		comment_message: String,
+var storySchema = mongoose.Schema({
+    category: String,
+    tags: [String],
+    title: String,
+    body: Object,
+    author: String,
+    created_at: Date,
+    verified: Boolean,
+    likes: Number,
+    comments: [{
+        comment_message: String,
         comment_time: String,
         comment_by: String
     }]
