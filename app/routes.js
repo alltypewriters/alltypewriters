@@ -51,6 +51,34 @@ module.exports = function(app, passport) {
             res.render('editor.ejs')
 
     });
+    var Story = require('./models/story');
+
+    Story.createStory = function(newFeature, callback) {
+            newFeature.save(callback);
+        }
+
+
+    app.post('/profile/startastory',isLoggedIn,function(req, res){
+            var category= req.body.category;
+            var author= req.user.facebook.name;
+            var  title=req.body.title;
+            var body=delta;
+            var created_at= Date();
+            var newStory = new Story({
+                category: category,
+                title: title,
+                author: author,
+                body: body,
+                created_at: created_at
+            });
+            // save the user
+        newStory.save(function(err) {
+        if (err) throw err;
+
+        console.log('User created!');
+});
+        res.redirect('/profile');
+    });
      
        // =====================================
     // FACEBOOK ROUTES =====================

@@ -57,21 +57,21 @@
                 </ul>
             </div>
 
-            <form role="form">
+            <form action="/profile/startastory" method="post">
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">
                         <h3>Step 1</h3>
                         <p><strong>Select a category</strong></p>
-                        <form action="/profile/startastory" method="post">
+                        
                         <div class="form-group">
                                 <div class="radio">
-                                <label><input type="radio" name="category">Label 1</label> 
+                                <label><input type="radio" name="category" value="Unsung Heroes">Unsung Heroes</label> 
                                 </div>
                                 <div class="radio">
-                                <label><input type="radio" name="category">Label 2</label>
+                                <label><input type="radio" name="category" value="Beyond Headlines">Beyond Headlines</label>
                                 </div>
                                 <div class="radio">
-                                <label><input type="radio" name="category">Label 3</label>
+                                <label><input type="radio" name="category" value="Under the Sun">Under the Sun</label>
                                 </div>
                         </div>
                         <ul class="list-inline pull-right">
@@ -102,14 +102,16 @@
                                 <p><br></p>
                                 </div>
                             </div>
+                            
+
                             <ul class="list-inline pull-right">
                             
 
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
+                            <li><button type="Submit" class="btn btn-primary btn-info-full next-step">Submit</button></li>
                         </ul>
                     </div>
-                    </form>
+                    
                     <div class="tab-pane" role="tabpanel" id="complete">
                         <h3>Complete</h3>
                         <p>You have successfully completed all steps.</p>

@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
-var storySchema== mongoose.Schema({
+var storySchema= mongoose.Schema({
 	category: String,
 	tags: [String],
 	title: String,
 	body: String,
 	author: String,
-	created-at : Date,
+	created_at : Date,
 	verified: Boolean,
 	likes : Number,
 	comments :[{ 
