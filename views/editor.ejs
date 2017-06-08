@@ -159,8 +159,8 @@ $(document).ready(function() {
     $('form').submit(function(event) {
 
         var about = document.querySelector('input[name=about]');
-        about.value = JSON.stringify(quill.getContents());
-        //console.log(about.value);
+        about.value = JSON.stringify(quill.root.innerHTML);
+        console.log(about.value);
         // get the form data
         // there are many ways to get this data using jQuery (you can use the class or id also)
         var formData = {
