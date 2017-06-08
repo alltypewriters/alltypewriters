@@ -7,16 +7,7 @@
     <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css" type="text/css"> <!-- load bootstrap-theme css -->
     <link rel="stylesheet" href="/editor/formcss.css" type="text/css">
     <!-- Include stylesheet for Text-Editor -->
-    <!-- Include external CSS. -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
- 
-    <!-- Include Editor style. -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_style.min.css" rel
-    <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
-    <link href="../css/froala_style.min.css" rel="stylesheet" type="text/css" />
-
+        <link href="https://cdn.quilljs.com/1.2.5/quill.snow.css" rel="stylesheet">
 </head>
 
 
@@ -26,8 +17,8 @@
 <body>
 
 <div class="container">
-	<div class="row">
-		<section>
+    <div class="row">
+        <section>
         <div class="wizard">
             <div class="wizard-inner">
                 <div class="connecting-line"></div>
@@ -74,7 +65,7 @@
                         
                         <div class="form-group">
                                 <div class="radio">
-                                <label><input type="radio" name="category" value="Unsung Heroes" required>Unsung Heroes</label> 
+                                <label><input type="radio" name="category" value="Unsung Heroes">Unsung Heroes</label> 
                                 </div>
                                 <div class="radio">
                                 <label><input type="radio" name="category" value="Beyond Headlines">Beyond Headlines</label>
@@ -102,12 +93,16 @@
                     </div>
                     <div class="tab-pane" role="tabpanel" id="step3">
                          <h3>Step 3</h3>
-                         <!--Text-Editor-->  
-
-                         <div class="fr-view">
-                        <textarea class="selector"></textarea>
-                        
-                        </div>
+                         <!--Text-Editor-->
+                            <div class="form-group">
+                                <!-- Create the editor container -->
+                               <input name="about" type="hidden">
+                                <div id="editor">
+                                <p>Hello World!</p>
+                                <p>Some initial <strong>bold</strong> text</p>
+                                <p><br></p>
+                                </div>
+                            </div>
                             
 
                             <ul class="list-inline pull-right">
@@ -140,32 +135,38 @@
     <script src="/editor/form.js"></script> 
 
 
-    <!-- Include external JS libs. -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
- 
-    <!-- Include Editor JS files. -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/js/froala_editor.pkgd.min.js"></script>
- 
-    <!-- Initialize the editor. -->
-    <script> $(function() { $('textarea').froalaEditor() }); </script>
-  <script>
-      
-      
+    <!-- Text-Editor-->
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.2.5/quill.js"></script>
+
+    <!-- Initialize Quill editor -->
+        <script>
+            var quill = new Quill('#editor', {
+  modules: {
+    toolbar: [
+      ['bold', 'italic'],
+      ['link', 'blockquote', 'code-block', 'image'],
+      [{ list: 'ordered' }, { list: 'bullet' }]
+    ]
+  },
+  placeholder: 'Compose an epic...',
+            theme: 'snow'
+        });
+
 $(document).ready(function() {
 
     // process the form
     $('form').submit(function(event) {
-         var about=$('.selector').html();
-         console.log(about);
+
+        var about = document.querySelector('input[name=about]');
+        about.value = JSON.stringify(quill.getContents());
         //console.log(about.value);
         // get the form data
         // there are many ways to get this data using jQuery (you can use the class or id also)
         var formData = {
             'category'           : $('input[name=category]').val(),
             'title'             : $('input[name=title]').val(),
-            'body'              :about
+            'body'               : about.value
         };
         // process the form
         $.ajax({
@@ -187,11 +188,12 @@ $(document).ready(function() {
         // stop the form from submitting the normal way and refreshing the page
         event.preventDefault();
     });
-  </script>
 
-  </body>
+});
 
-</html>
+
+    </script>
+
 
 </body>
 
