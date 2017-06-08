@@ -3,7 +3,7 @@ var storySchema = mongoose.Schema({
     category: String,
     tags: [String],
     title: String,
-    body: Object,
+    body: String,
     author: String,
     created_at: Date,
     verified: Boolean,
