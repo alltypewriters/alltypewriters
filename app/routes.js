@@ -41,8 +41,38 @@ module.exports = function(app, passport) {
     // =====================================
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
+    
+
+
+
+    var Story = require('./models/story');
+
+    Story.createStory = function(newFeature, callback) {
+        newFeature.save(callback);
+    }
+
+
+
+
+
+
+
     app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile.ejs', {
+        
+
+    Story.find(function(err, Story) {
+         if (err) throw err;
+         else{
+         if(story.author==req.user.facebook.name){ 
+            if(story.verified==false){
+                console.log("Story is not verified");
+
+            } 
+        }
+        }
+    } );
+
+            res.render('profile.ejs', {
             user: req.user // get the user out of session and pass to template
         });
     });
@@ -61,12 +91,6 @@ module.exports = function(app, passport) {
     // =====================================
     // SCHEMA LOADED (story) ===============
     // =====================================    
-
-    var Story = require('./models/story');
-
-    Story.createStory = function(newFeature, callback) {
-        newFeature.save(callback);
-    }
 
     // =====================================
     // POST A NEW STORY ====================
