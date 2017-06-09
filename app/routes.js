@@ -60,14 +60,13 @@ module.exports = function(app, passport) {
     app.get('/profile', isLoggedIn, function(req, res) {
         
 
-    Story.find(function(err, Story) {
+    Story.find(function(err, story) {
          if (err) throw err;
          else{
-         if(story.author==req.user.facebook.name){ 
-            if(story.verified==false){
-                console.log("Story is not verified");
-
-            } 
+         total = Object.keys(story).length;
+        for(i =0;i<total;i++)
+         if(story[i].author==req.user.facebook.name){ 
+            console.log(story[i]); 
         }
         }
     } );
@@ -118,6 +117,14 @@ module.exports = function(app, passport) {
         res.redirect('/profile');
     });
 
+      app.get('/verified', function(req, res) {
+        Story.find(function(err, story) {
+            if (err) throw err;
+            else {
+                res.json(story);
+            }
+        });
+    });
     // =====================================
     // FACEBOOK ROUTES =====================
     // =====================================

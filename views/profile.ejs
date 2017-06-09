@@ -110,7 +110,7 @@
 
     </div>
 </div>
-
+        <div class="mystory"></div>
 
 
 
@@ -139,9 +139,30 @@
         $("#wrapper").toggleClass("toggled");
     });
     </script>
+  
+
+    <script>
+      $(document).ready(function() {
+        $.getJSON("http://localhost:8080/verified",
+        function(data){
+            var html="";
+            data.forEach(function(val){
+                var keys= Object.keys(val);
+                html+= "<div>";
+                keys.forEach(function(key){
+                    html+=key +":"+ val[key]+"<br>";
+
+                });
+                html+="</div><br>"
+            });
+            $(".mystory").html(html);
+        });
 
 
-    
+
+    });        
+
+    </script>
 
 </body>
 

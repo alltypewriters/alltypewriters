@@ -6,7 +6,10 @@ var storySchema = mongoose.Schema({
     body: String,
     author: String,
     created_at: Date,
-    verified: Boolean,
+    verified: {
+    type:Boolean,
+    default:false
+    },
     likes: Number,
     comments: [{
         comment_message: String,
