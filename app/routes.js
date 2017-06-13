@@ -41,7 +41,7 @@ module.exports = function(app, passport) {
     // =====================================
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
-    
+
 
 
 
@@ -58,20 +58,20 @@ module.exports = function(app, passport) {
 
 
     app.get('/profile', isLoggedIn, function(req, res) {
-        
 
-    Story.find(function(err, story) {
-         if (err) throw err;
-         else{
-         total = Object.keys(story).length;
-        for(i =0;i<total;i++)
-         if(story[i].author==req.user.facebook.name){ 
-            console.log(story[i]); 
-        }
-        }
-    } );
 
-            res.render('profile.ejs', {
+        Story.find(function(err, story) {
+            if (err) throw err;
+            else {
+                total = Object.keys(story).length;
+                for (i = 0; i < total; i++)
+                    if (story[i].author == req.user.facebook.name) {
+                        console.log(story[i]);
+                    }
+            }
+        });
+
+        res.render('profile.ejs', {
             user: req.user // get the user out of session and pass to template
         });
     });
@@ -97,8 +97,16 @@ module.exports = function(app, passport) {
     // var Story = require('./models/story');
 
     app.post('/profile/startastory', function(req, res) {
+        /* Code for Author */
+        if (req.user.facebook.name) {
+            var author = req.user.facebook.name;
+        } else if (req.user.google.name) {
+            var author = req.user.google.name;
+        } else {
+            var author = req.user.local.name;
+        }
+
         var category = req.body.category;
-        var author = req.user.facebook.name;
         var title = req.body.title;
         var body = req.body.body;
         var created_at = Date();
@@ -117,7 +125,7 @@ module.exports = function(app, passport) {
         res.redirect('/profile');
     });
 
-      app.get('/verified', function(req, res) {
+    app.get('/verified', function(req, res) {
         Story.find(function(err, story) {
             if (err) throw err;
             else {
