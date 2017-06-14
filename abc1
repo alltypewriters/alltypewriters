@@ -1,0 +1,59 @@
+<section id="services" class="home-services">
+<div class="container">
+<div class="row">
+
+<div class="col-xs-4">
+    <div class="service-single text-center wow fadeInDown" data-wow-delay="0.2s">
+        <div class="box-top">
+        <i class="fa fa-windows"></i>
+        <h2>Windows</h2>
+        </div>
+        <div class="box-down">
+            <p>Easy Bootstrap Shortcode enable you to add bootstrap 3.0.3 styles in your pages with this code.</p>
+            <div class="smooth"><a href="#contact" class="btn btn-holly">Order Now</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-4">
+    <div class="service-single text-center wow fadeInDown" data-wow-delay="0.4s">
+        <div class="box-top">
+        <i class="fa fa-apple"></i>
+        <h2>IOS</h2>
+        </div>
+        <div class="box-down">
+            <p>Service Box Easy Bootstrap. Bootstrap Review / service Design code example snippet for Bootstrap. </p>
+            <div class="smooth"><a href="#contact" class="btn btn-holly">Order Now</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-4">
+    <div class="service-single text-center wow fadeInDown" data-wow-delay="0.6s">
+        <div class="box-top">
+        <i class="fa fa-android"></i>
+        <h2>Android</h2>
+        </div>
+        <div class="box-down">
+            <p>bootstrap box with rounded corners. Library of precisely prepared monochromatic icons and symbols.</p>
+    <div class="smooth"><a href="#contact" class="btn btn-holly">Order Now</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-4">
+    <div class="service-single text-center wow fadeInDown" data-wow-delay="0.8s">
+        <div class="box-top">
+        <i class="fa fa-linux"></i>
+        <h2>Linux</h2>
+        </div>
+        <div class="box-down">
+            <p>Best free font icons to use with Bootstrap, including a description and explaining how to use them.</p>
+            <div class="smooth"><a href="#contact" class="btn btn-holly">Order Now</a></div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</section>

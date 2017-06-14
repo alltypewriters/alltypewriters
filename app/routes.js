@@ -87,7 +87,10 @@ module.exports = function(app, passport) {
 
     });
     app.get('/profile/unsungheroes', isLoggedIn, function(req, res) {
-        res.render('unsungheroes.ejs')
+        res.render('unsungheroes.ejs',{
+
+            user: req.user
+        });
 
     });
 
@@ -100,7 +103,7 @@ module.exports = function(app, passport) {
     // =====================================
     // var Story = require('./models/story');
 
-    app.post('/profile/startastory', function(req, res) {
+    app.post('/profile/startastory', isLoggedIn,function(req, res) {
         /* Code for Author */
         if (req.user.facebook.name) {
             var author = req.user.facebook.name;
@@ -137,6 +140,25 @@ module.exports = function(app, passport) {
             }
         });
     });
+    
+    app.get('/profile/unsungheroes/:id',isLoggedIn,function(req,res){
+        Story.find({"_id" : req.params.id},function(err,story){
+            if (err) throw err;
+
+           res.render('story.ejs',{
+                body: story[0].body
+
+            });
+           console.log(story);
+
+
+        });
+
+    });
+
+
+
+
     // =====================================
     // FACEBOOK ROUTES =====================
     // =====================================

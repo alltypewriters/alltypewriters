@@ -1,72 +1,39 @@
-body {
-  font-family: "Open Sans", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.5em;
-  font-weight: 400;
+.service-single{
+    margin-top: 30px;
+  padding-bottom: 10px;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 0 10px #e8e8e8;
 }
-
-p, span, a, ul, li, button {
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-}
-
-strong {
-  font-weight: 600;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Open Sans", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.5em;
-  font-weight: 300;
-}
-
-strong {
-  font-weight: 400;
-}
-
-.tile {
-  width: 100%;
-  display: inline-block;
-  box-sizing: border-box;
-  background: #fff;
-  padding: 20px;
-  margin-bottom: 30px;
-}
-.tile .title {
-  margin-top: 0px;
-}
-.tile.purple, .tile.blue, .tile.red, .tile.orange, .tile.green {
+.service-single .box-top{
+  background: #FFA500;
+  padding: 30px;
   color: #fff;
 }
-.tile.purple {
-  background: black;
+.service-single .box-top i{
+  font-size: 50px;
+  padding: 20px 0;
 }
-.tile.purple:hover {
-  background: #3e2784;
+.service-single .box-top h2{
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-bottom: 45px;
 }
-.tile.red {
-  background: black;
+.service-single .box-down{
+  max-width: 350px;
+  margin: 0 auto;
+  border-radius: 100%;
+  background: #fff;
+  margin-top: -50px;
+  padding: 50px 25px 10px 25px;
 }
-.tile.red:hover {
-  background: #7f132d;
+.service-single .btn-holly{
+    background: #fff;
+  border:1px solid #f0f0f0;
+  border-radius: 20px;
+  color: #FFA500;
 }
-.tile.green {
-  background: black;
-}
-.tile.green:hover {
-  background: #007300;
-}
-.tile.blue {
-  background: black;
-}
-.tile.blue:hover {
-  background: #125acd;
-}
-.tile.orange {
-  background: black;
-}
-.tile.orange:hover {
-  background: #b8431f;
+.service-single .btn-holly:hover{
+  background: #FFA500;
+  border-color: #FFA500;
+  color: #fff;
 }

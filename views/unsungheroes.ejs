@@ -1,25 +1,91 @@
 <html>
 <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
 <title>Unsung Heroes</title>
+ 
+
  <!-- Bootstrap Core CSS -->
     
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" type="text/css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css" type="text/css"> <!-- load bootstrap-theme css -->
     <link rel="stylesheet" href="/layout.css" type="text/css">
-
+    <!-- Theme CSS -->
+    <link href="/index/css/freelancer.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="/index/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
 </head>
 <style>
 	body{
-	background-color:#816D69
+	background-color:white
 
 	}
 </style>
 
 
-<body>
+<body id="page-top" class="index">
+
+<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top">All Type Writers</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    
+                    <li class="page-scroll">
+                        <a href="/profile/startastory" target="_blank">Start a story</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/logout">Logout</a>
+                    </li>
+                     <%if (user.facebook.name) {%>
+                    <li class="page-scroll">
+                        <a href="#">Hi!  <%=user.facebook.name%></a>
+                    </li><%}%>
+                    <%if (user.google.name) {%>                    
+                    <li class="page-scroll">
+                        <a href="#>Hi!  <%=user.google.name%></a>
+                    </li><%}%>
+                    <%if (user.local.name) {%>
+                        <li class="page-scroll">
+                        <a href="#">Hi!  <%=user.local.name%></a>
+                    </li><%}%>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+<div><br><br><br><br><br><br>
+<h1 class="text-center"><strong>Unsung Heroes</strong></h1>
+</div>
+
+<section id="services" class="home-services">
 <div class="container mystory">
-  </div>
+	
+</div>
+</section>
 
 
 
@@ -33,6 +99,14 @@
  <!-- Bootstrap Core JavaScript -->
  <script src="/bootstrap/js/bootstrap.min.js"></script>
 
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+
+     <!-- Theme JavaScript -->
+    <script src="/index/js/freelancer.min.js"></script>
+
+    <!-- Javascript for displaying Unsung-heroes stories-->
 <script>
         $(document).ready(function() {
         $.getJSON("http://localhost:8080/verified",
@@ -40,17 +114,18 @@
             
             data.forEach(function(val){
                 var html="";
-                if(val.verified==true){
-                var keys= Object.keys(val);
+                if(val.verified==false){
                 
-                keys.forEach(function(key){
-                    html+=key +":"+ val[key]+"<br>";
+                
+                    var str=val["body"].slice(0, 100);
+                    html+=str+"<br>";
+                    html+= val["author"]+"<br>";
+                    var url="/profile/unsungheroes/"+val._id;
 
-                });
+
+                    $(".mystory").append("<div class='col-xs-4'><div class='service-single text-center wow fadeInDown'><div class='box-top'><h2>"+val.title+"</h2></div><div class='box-down'><p>"+ html +"</p><div class='smooth'><a href='" +url + "'  class='btn btn-holly'>See More</a></div></div></div></div>"); 
                 }
-                console.log(html);
-                console.log('------------------------------')
-                $(".mystory").append("<div class='col-sm-4'><div class='tile purple'><p>"+html+"</p></div></div>")                  
+                                
             });
             
         });
