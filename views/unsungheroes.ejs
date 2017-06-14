@@ -34,7 +34,7 @@
  <script src="/bootstrap/js/bootstrap.min.js"></script>
 
 <script>
-            $(document).ready(function() {
+        $(document).ready(function() {
         $.getJSON("http://localhost:8080/verified",
         function(data){
             
@@ -48,11 +48,9 @@
 
                 });
                 }
-                 $(".mystory").html('<div class="col-sm-4">
-                <div class="tile purple">
-        		<p>'+ html +'</p>
-      			</div>
-    			</div>');   
+                console.log(html);
+                console.log('------------------------------')
+                $(".mystory").append("<div class='col-sm-4'><div class='tile purple'><p>"+html+"</p></div></div>")                  
             });
             
         });
