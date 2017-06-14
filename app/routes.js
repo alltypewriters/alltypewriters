@@ -86,6 +86,10 @@ module.exports = function(app, passport) {
         res.render('editor.ejs')
 
     });
+    app.get('/profile/unsungheroes', isLoggedIn, function(req, res) {
+        res.render('unsungheroes.ejs')
+
+    });
 
     // =====================================
     // SCHEMA LOADED (story) ===============
