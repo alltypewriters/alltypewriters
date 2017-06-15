@@ -78,7 +78,7 @@
         <!-- /.container-fluid -->
     </nav>
 <div><br><br><br><br><br><br>
-<h1 class="text-center"><strong>Unsung Heroes</strong></h1>
+<h1 class="text-center"><strong>Beyond Headlines</strong></h1>
 </div>
 
 <section id="services" class="home-services">
@@ -114,13 +114,13 @@
             
             data.forEach(function(val){
                 var html="";
-                if(val.verified==false && val.category=="Unsung Heroes"){
+                if(val.verified==false && val.category=="Under the Sun"){
                 
                 
                     var str=val["body"].slice(0, 100);
                     html+=str+"<br>";
                     html+= val["author"]+"<br>";
-                    var url="/profile/unsungheroes/"+val._id;
+                    var url="/profile/underthesun/"+val._id;
 
 
                     $(".mystory").append("<div class='col-xs-4'><div class='service-single text-center wow fadeInDown'><div class='box-top'><h2>"+val.title+"</h2></div><div class='box-down'><p>"+ html +"</p><div class='smooth'><a href='" +url + "'  class='btn btn-holly'>See More</a></div></div></div></div>"); 

@@ -93,6 +93,22 @@ module.exports = function(app, passport) {
         });
 
     });
+    app.get('/profile/beyondheadlines', isLoggedIn, function(req, res) {
+        res.render('beyondheadlines.ejs',{
+
+            user: req.user
+        });
+
+    });
+     app.get('/profile/underthesun', isLoggedIn, function(req, res) {
+        res.render('beyondheadlines.ejs',{
+
+            user: req.user
+        });
+
+    });
+
+
 
     // =====================================
     // SCHEMA LOADED (story) ===============
@@ -145,11 +161,49 @@ module.exports = function(app, passport) {
         Story.find({"_id" : req.params.id},function(err,story){
             if (err) throw err;
 
-           res.render('story.ejs',{
-                body: story[0].body
+           res.render('story-unsungheroes.ejs',{
+                title: story[0].title,
+                body: story[0].body,
+                author: story[0].author,
+                date: story[0].created_at
 
             });
-           console.log(story);
+          // console.log(story);
+
+
+        });
+
+    });
+
+    app.get('/profile/beyondheadlines/:id',isLoggedIn,function(req,res){
+        Story.find({"_id" : req.params.id},function(err,story){
+            if (err) throw err;
+
+           res.render('story-beyondheadlines.ejs',{
+                title: story[0].title,
+                body: story[0].body,
+                author: story[0].author,
+                date: story[0].created_at
+
+            });
+           //console.log(story);
+
+
+        });
+
+    });
+     app.get('/profile/underthesun/:id',isLoggedIn,function(req,res){
+        Story.find({"_id" : req.params.id},function(err,story){
+            if (err) throw err;
+
+           res.render('story-underthesun.ejs',{
+                title: story[0].title,
+                body: story[0].body,
+                author: story[0].author,
+                date: story[0].created_at
+
+            });
+          // console.log(story);
 
 
         });
