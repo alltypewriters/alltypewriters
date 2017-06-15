@@ -65,7 +65,7 @@
                     </li><%}%>
                     <%if (user.google.name) {%>                    
                     <li class="page-scroll">
-                        <a href="#>Hi!  <%=user.google.name%></a>
+                        <a href="#">Hi!  <%=user.google.name%></a>
                     </li><%}%>
                     <%if (user.local.name) {%>
                         <li class="page-scroll">
@@ -114,7 +114,8 @@
             
             data.forEach(function(val){
                 var html="";
-                if(val.verified==false && val.category=="Unsung Heroes"){
+                var str1=val.category.trim();
+                if(val.verified==false && val.category==str1){
                 
                 
                     var str=val["body"].slice(0, 100);

@@ -64,14 +64,20 @@
                         <p><strong>Select a category</strong></p>
                         
                         <div class="form-group">
-                                <div class="radio">
-                                <label><input type="radio" name="category" value="Unsung Heroes" checked="checked">Unsung Heroes</label> 
+                                <div class="radio">   
+                                <label>
+                                <input type="radio" name="category" value="Unsung Heroes" />Unsung Heroes
+                                </label> 
                                 </div>
                                 <div class="radio">
-                                <label><input type="radio" name="category" value="Beyond Headlines">Beyond Headlines</label>
+                                <label>
+                                <input type="radio" name="category" value="Beyond Headlines" />Beyond Headlines
+                                </label>
                                 </div>
                                 <div class="radio">
-                                <label><input type="radio" name="category" value="Under the Sun">Under the Sun</label>
+                                <label>
+                                <input type="radio" name="category" value="Under the Sun" />Under the Sun
+                                </label>
                                 </div>
                         </div>
                         <ul class="list-inline pull-right">
@@ -138,11 +144,12 @@ $(document).ready(function() {
     // process the form
     $('form').submit(function(event) {
 
-      
+        //this is how we take input from radio buttons
+      console.log($('input[name=category]:checked').val())
         // get the form data
         // there are many ways to get this data using jQuery (you can use the class or id also)
         var formData = {
-            'category'           : $('input[name=category]').val(),
+            'category'           : $('input[name=category]:checked').val(),
             'title'             : $('input[name=title]').val(),
             'body'             : $('input[name=body]').val(),
         };

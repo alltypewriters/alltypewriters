@@ -41,24 +41,13 @@ module.exports = function(app, passport) {
     // =====================================
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
-
-
-
-
     var Story = require('./models/story');
 
     Story.createStory = function(newFeature, callback) {
         newFeature.save(callback);
     }
 
-
-
-
-
-
-
     app.get('/profile', isLoggedIn, function(req, res) {
-
 
         Story.find(function(err, story) {
             if (err) throw err;
@@ -86,23 +75,26 @@ module.exports = function(app, passport) {
         res.render('editor.ejs')
 
     });
-    app.get('/profile/unsungheroes', isLoggedIn, function(req, res) {
-        res.render('unsungheroes.ejs',{
 
+    // =====================================
+    // CATEGORY GET REQUESTS================
+    // =====================================
+    // we will want this protected so you have to be logged in to visit
+    // we will use route middleware to verify this (the isLoggedIn function)
+    app.get('/profile/unsungheroes', isLoggedIn, function(req, res) {
+        res.render('unsungheroes.ejs', {
             user: req.user
         });
 
     });
     app.get('/profile/beyondheadlines', isLoggedIn, function(req, res) {
-        res.render('beyondheadlines.ejs',{
-
+        res.render('beyondheadlines.ejs', {
             user: req.user
         });
 
     });
-     app.get('/profile/underthesun', isLoggedIn, function(req, res) {
-        res.render('beyondheadlines.ejs',{
-
+    app.get('/profile/underthesun', isLoggedIn, function(req, res) {
+        res.render('underthesun.ejs', {
             user: req.user
         });
 
@@ -119,7 +111,7 @@ module.exports = function(app, passport) {
     // =====================================
     // var Story = require('./models/story');
 
-    app.post('/profile/startastory', isLoggedIn,function(req, res) {
+    app.post('/profile/startastory', isLoggedIn, function(req, res) {
         /* Code for Author */
         if (req.user.facebook.name) {
             var author = req.user.facebook.name;
@@ -148,6 +140,11 @@ module.exports = function(app, passport) {
         res.redirect('/profile');
     });
 
+    // ================================================
+    // Route for JQuery Requests=======================
+    // ================================================
+    // This routes needs to be changed during deployment
+    // =================================================
     app.get('/verified', function(req, res) {
         Story.find(function(err, story) {
             if (err) throw err;
@@ -156,60 +153,49 @@ module.exports = function(app, passport) {
             }
         });
     });
-    
-    app.get('/profile/unsungheroes/:id',isLoggedIn,function(req,res){
-        Story.find({"_id" : req.params.id},function(err,story){
+    // ================================================
+    // Page for single story(0.1)======================
+    // ================================================
+    // This needs to be changed, not efficient
+    // =================================================
+    app.get('/profile/unsungheroes/:id', isLoggedIn, function(req, res) {
+        Story.find({ "_id": req.params.id }, function(err, story) {
             if (err) throw err;
-
-           res.render('story-unsungheroes.ejs',{
+            res.render('story.ejs', {
                 title: story[0].title,
                 body: story[0].body,
                 author: story[0].author,
                 date: story[0].created_at
 
             });
-          // console.log(story);
-
-
         });
-
     });
 
-    app.get('/profile/beyondheadlines/:id',isLoggedIn,function(req,res){
-        Story.find({"_id" : req.params.id},function(err,story){
+    app.get('/profile/beyondheadlines/:id', isLoggedIn, function(req, res) {
+        Story.find({ "_id": req.params.id }, function(err, story) {
             if (err) throw err;
 
-           res.render('story-beyondheadlines.ejs',{
+            res.render('story.ejs', {
                 title: story[0].title,
                 body: story[0].body,
                 author: story[0].author,
                 date: story[0].created_at
 
             });
-           //console.log(story);
-
-
         });
-
     });
-     app.get('/profile/underthesun/:id',isLoggedIn,function(req,res){
-        Story.find({"_id" : req.params.id},function(err,story){
+    app.get('/profile/underthesun/:id', isLoggedIn, function(req, res) {
+        Story.find({ "_id": req.params.id }, function(err, story) {
             if (err) throw err;
 
-           res.render('story-underthesun.ejs',{
+            res.render('story.ejs', {
                 title: story[0].title,
                 body: story[0].body,
                 author: story[0].author,
                 date: story[0].created_at
-
             });
-          // console.log(story);
-
-
         });
-
     });
-
 
 
 

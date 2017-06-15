@@ -59,14 +59,14 @@
                     <li class="page-scroll">
                         <a href="/logout">Logout</a>
                     </li>
-                     <%if (user.facebook.name) {%>
+                    <%if (user.facebook.name) {%>
                     <li class="page-scroll">
                         <a href="#">Hi!  <%=user.facebook.name%></a>
                     </li><%}%>
                     <%if (user.google.name) {%>                    
                     <li class="page-scroll">
-                        <a href="#>Hi!  <%=user.google.name%></a>
-                    </li><%}%>
+                        <a href="#">Hi!  <%=user.google.name%></a>
+                    </li> <%}%>
                     <%if (user.local.name) {%>
                         <li class="page-scroll">
                         <a href="#">Hi!  <%=user.local.name%></a>
@@ -114,6 +114,7 @@
             
             data.forEach(function(val){
                 var html="";
+                console.log(val.category);
                 if(val.verified==false && val.category=="Beyond Headlines"){
                 
                 
