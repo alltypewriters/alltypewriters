@@ -158,13 +158,14 @@ module.exports = function(app, passport) {
     // ================================================
     // This needs to be changed, not efficient
     // =================================================
-    app.get('/profile/unsungheroes/:id', isLoggedIn, function(req, res) {
+    app.get('/profile/unsungheroes/:id', function(req, res) {
         Story.find({ "_id": req.params.id }, function(err, story) {
             if (err) throw err;
             res.render('story.ejs', {
                 title: story[0].title,
                 body: story[0].body,
                 author: story[0].author,
+                user: req.user,
                 date: story[0].created_at
 
             });
@@ -178,19 +179,16 @@ module.exports = function(app, passport) {
             //var body_html = (story[0].body).replace("\n", "<br/>");
             //console.log(body_html)
             res.render('story.ejs', {
-
                 title: story[0].title,
                 body: story[0].body,
                 author: story[0].author,
                 date: story[0].created_at
-
             });
         });
     });
     app.get('/profile/underthesun/:id', isLoggedIn, function(req, res) {
         Story.find({ "_id": req.params.id }, function(err, story) {
             if (err) throw err;
-
             res.render('story.ejs', {
                 title: story[0].title,
                 body: story[0].body,
@@ -199,7 +197,6 @@ module.exports = function(app, passport) {
             });
         });
     });
-
 
 
     // =====================================
@@ -229,8 +226,6 @@ module.exports = function(app, passport) {
             successRedirect: '/profile',
             failureRedirect: '/'
         }));
-
-
     // =====================================
     // LOGOUT ==============================
     // =====================================
