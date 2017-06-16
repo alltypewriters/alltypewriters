@@ -186,7 +186,7 @@ module.exports = function(app, passport) {
             });
         });
     });
-    app.get('/profile/underthesun/:id', isLoggedIn, function(req, res) {
+    app.get('/profile/underthesun/:id', function(req, res) {
         Story.find({ "_id": req.params.id }, function(err, story) {
             if (err) throw err;
             res.render('story.ejs', {
