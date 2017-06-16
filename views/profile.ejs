@@ -26,15 +26,28 @@
     <!--BOX for displayinf categories css-->
     <link rel="stylesheet" href="box.css" type="text/css"> <!-- Sidebartheme-->
     <style>
-         .container.custom-container {
-                 margin-left: 290px;
-                 margin-top: 80px;
-            }
-            .container.custom-container1{
-                    margin-left: 320px;
-            }
-        
+    .container-fluid{
+        margin-left: 200px;
+        margin-top: 60px;
+    }    
+    .col-xs-4{
+        /*border-top: 1px solid;
+        border-bottom: 1px solid;
+        border-right: 1px solid;
+        border-left: 1px solid;*/
+    }
+    .category-name{
+        text-align: center;
+    }
+    .category-details{
+        text-align: justify;
+    }
+    .category-link{
+        text-align: center;
+    }    
+    
     </style>
+    
     
 </head>
 
@@ -125,78 +138,47 @@
 
 
         <!--Bootstrap boxes to display categories-->
-        <div class="custom-container container">
-    <div class="row">
-        <!-- Boxes de Acoes -->
-        <div class="col-xs-24 col-sm-12 col-lg-4">
-            <div class="box">                           
-                <div class="icon">
-                    <div class="image"><i class="fa fa-thumbs-o-up"></i></div>
-                    <div class="info">
-                        <h3 class="title">Unsung Heroes</h3>
-                        <p>
-                           Details
-                        </p>
-                        <div class="more">
-                            <a href="/profile/unsungheroes" title="Title Link">
-                                Read More <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="space"></div>
-            </div> 
+
+        <div class="container-fluid">
+            <div class="col-xs-4">
+                <h3 class="category-name">Unsung Heros</h2>
+                <p class="category-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h4 class="category-link">
+                    <a href="/profile/unsungheroes" title="Title Link">Read More</a>
+                </h5>>
+            </div>
+            <div class="col-xs-4">
+                <h3 class="category-name">Beyond Headlines</h2>
+                <p class="category-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h4 class="category-link">
+                    <a href="/profile/beyondheadlines" title="Title Link">Read More</a>
+                </h5>
+            </div>
+            <div class="col-xs-4">
+                <h3 class="category-name">Under the Sun</h2>
+                <p class="category-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod stempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h4 class="category-link">
+                    <a href="/profile/underthesun" title="Title Link">Read More</a>
+                </h5>
+            </div>
         </div>
+                
             
                     
-
-        <div class="col-xs-12 col-sm-12 col-lg-4">
-            <div class="box">                           
-                <div class="icon">
-                    <div class="image"><i class="fa fa-desktop"></i></div>
-                    <div class="info">
-                        <h3 class="title">Beyond Headlines</h3>
-                        <p> Details
-                        </p>
-                        <div class="more">
-                            <a href="/profile/beyondheadlines" title="Title Link">
-                                Read More <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="space"></div>
-            </div> 
-        </div>          
-        <!-- /Boxes de Acoes -->
-    </div>
-</div>
-
-<div class="custom-container1 container">
-      <div class="row">
-
-    <div class="col-xs-12 col-sm-12 col-lg-4">
-            <div class="box mid">                           
-                <div class="icon">
-                    <div class="image"><i class="fa fa-flag"></i></div>
-                    <div class="info">
-                        <h3 class="title">Under The Sun</h3>
-                        <p> 
-                        Details
-                        </p>
-                        <div class="more">
-                            <a href="/profile/underthesun" title="Title Link">
-                                Read More <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="space"></div>
-            </div> 
-        </div>
-
-    </div>
-    </div>
 
 
 
