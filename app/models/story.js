@@ -7,8 +7,8 @@ var storySchema = mongoose.Schema({
     author: String,
     created_at: Date,
     verified: {
-    type:Boolean,
-    default:false
+        type: Boolean,
+        default: false
     },
     likes: Number,
     comments: [{

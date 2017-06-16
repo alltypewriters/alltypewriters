@@ -49,16 +49,16 @@ module.exports = function(app, passport) {
 
     app.get('/profile', isLoggedIn, function(req, res) {
 
-        Story.find(function(err, story) {
-            if (err) throw err;
-            else {
-                total = Object.keys(story).length;
-                for (i = 0; i < total; i++)
-                    if (story[i].author == req.user.facebook.name) {
-                        console.log(story[i]);
-                    }
-            }
-        });
+        /*  Story.find(function(err, story) {
+              if (err) throw err;
+              else {
+                  total = Object.keys(story).length;
+                  for (i = 0; i < total; i++)
+                      if (story[i].author == req.user.facebook.name) {
+                          console.log(story[i]);
+                      }
+              }
+          });*/
 
         res.render('profile.ejs', {
             user: req.user // get the user out of session and pass to template
@@ -171,11 +171,14 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/profile/beyondheadlines/:id', isLoggedIn, function(req, res) {
+    app.get('/profile/beyondheadlines/:id', function(req, res) {
         Story.find({ "_id": req.params.id }, function(err, story) {
             if (err) throw err;
-
+            //console.log(story[0].body)
+            //var body_html = (story[0].body).replace("\n", "<br/>");
+            //console.log(body_html)
             res.render('story.ejs', {
+
                 title: story[0].title,
                 body: story[0].body,
                 author: story[0].author,
