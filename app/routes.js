@@ -1,4 +1,4 @@
-// app/routes.js
+ // app/routes.js
 module.exports = function(app, passport) {
 
     // ==================================================
@@ -140,6 +140,39 @@ module.exports = function(app, passport) {
         res.redirect('/profile');
     });
 
+//post request for submitting comment
+
+    app.post('/:id/comment', isLoggedIn, function(req, res) {
+        /* Code for Author */
+        if (req.user.facebook.name) {
+            var author = req.user.facebook.name;
+        } else if (req.user.google.name) {
+            var author = req.user.google.name;
+        } else {
+            var author = req.user.local.name;
+        }
+
+        var category = req.body.category;
+        var title = req.body.title;
+        var body = req.body.body;
+        var created_at = Date();
+        var newStory = new Story({
+            category: category,
+            title: title,
+            body: body,
+            author: author,
+            created_at: created_at
+        });
+        // save the story
+        newStory.save(function(err) {
+            if (err) throw err;
+            console.log('Story Done!');
+        });
+        res.redirect('/profile');
+    });
+
+
+
     // ================================================
     // Route for JQuery Requests=======================
     // ================================================
@@ -193,7 +226,10 @@ module.exports = function(app, passport) {
                 title: story[0].title,
                 body: story[0].body,
                 author: story[0].author,
-                date: story[0].created_at
+                date: story[0].created_at,
+                id:  story[0]._id
+
+
             });
         });
     });
