@@ -144,33 +144,40 @@ module.exports = function(app, passport) {
 
     app.post('/:id/comment', isLoggedIn, function(req, res) {
         /* Code for Author */
+        Story.findById(req.params.id, function(err, story) {
+  if (err) throw err;
+
+  // update the story's comment sectiion
+  
+
         if (req.user.facebook.name) {
-            var author = req.user.facebook.name;
+            var comment_by = req.user.facebook.name;
         } else if (req.user.google.name) {
-            var author = req.user.google.name;
+            var comment_by = req.user.google.name;
         } else {
-            var author = req.user.local.name;
+            var comment_by = req.user.local.name;
         }
 
-        var category = req.body.category;
-        var title = req.body.title;
-        var body = req.body.body;
-        var created_at = Date();
-        var newStory = new Story({
-            category: category,
-            title: title,
-            body: body,
-            author: author,
-            created_at: created_at
-        });
-        // save the story
-        newStory.save(function(err) {
-            if (err) throw err;
-            console.log('Story Done!');
-        });
-        res.redirect('/profile');
-    });
+       var comment_message= req.body.comment;
+        var comment_time = Date();
+        
+        
+        story.comments.comment_by=comment_by;
+        story.comments.comment_message=comment_message;
+        story.comments.comment_time=comment_time;
 
+        // save the story
+        story.save(function(err) {
+         if (err) throw err;
+
+            console.log('Story successfully updated!');
+            
+        });   
+        
+        res.redirect('/profile');
+
+    });
+});
 
 
     // ================================================
@@ -199,7 +206,8 @@ module.exports = function(app, passport) {
                 body: story[0].body,
                 author: story[0].author,
                 user: req.user,
-                date: story[0].created_at
+                date: story[0].created_at,
+                id:  story[0]._id
 
             });
         });
@@ -215,7 +223,8 @@ module.exports = function(app, passport) {
                 title: story[0].title,
                 body: story[0].body,
                 author: story[0].author,
-                date: story[0].created_at
+                date: story[0].created_at,
+                id:  story[0]._id
             });
         });
     });
