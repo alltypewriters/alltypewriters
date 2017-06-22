@@ -48,6 +48,25 @@
     	color: red;
     	cursor:pointer;
 	}
+	.commentspecial{
+		background-color: #e8ecf2;
+		border-radius: 25px;
+		margin-top:10px;
+		padding-top: 6px;
+		margin-bottom: 20px;	
+		padding-left: 30px;
+		font-family: 'Open Sans', sans-serif;
+	}
+	.comment{
+		font-family: 'Open Sans', sans-serif;
+		padding-bottom: 6px;
+	}
+	h6{
+		color: #659ced;
+	}
+	#comment_message{
+		padding-bottom: 10px;
+	}
 </style>	
 </head>
 <body>
@@ -104,12 +123,15 @@
 		<div class="col-xs-13">
 				<h3>Comments:</h3>
 		</div>
+		<br>
 		
 			<%for(var i=0;i<comments.length;i++){%>
-
-				<div id="bodyText"><%=comments[i].comment_message%></div>
-
+				<div class="col-xs-13 commentspecial">
+					<h6><%=comments[i].comment_by%></h6>
+					<div id="comment_message"><%=comments[i].comment_message%></div>
+				</div>
 			<%}%>
+			<br>
 
 		
 		
@@ -118,10 +140,10 @@
 			<form role="form" action="/<%=id%>/comment" method="post">
 			    <div class="form-group">
 			      <label for="comment"></label>
-			      <textarea class="form-control" rows="2" id="comment" name="comment" placeholder="Praise the StoryTeller"></textarea>
+			      <textarea class="form-control" rows="2" id="comment" name="comment" placeholder="Praise the StoryTeller :) "></textarea>
 			    
 			    </div>
-	  			<button type="Submit" class="btn btn-primary btn-info-full next-step">Submit</button>
+	  			<button type="Submit" class="btn btn-primary btn-info-full next-step">Praise!</button>
 	  		</form>
 	  	</div>
 	</div>
