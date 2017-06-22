@@ -5,7 +5,7 @@
   box-shadow: 0 0 10px #e8e8e8;
 }
 .service-single .box-top{
-  background: #FFA500;
+  background: #cc9900;
   padding: 30px;
   color: #fff;
 }
@@ -33,7 +33,7 @@
   color: #FFA500;
 }
 .service-single .btn-holly:hover{
-  background: #FFA500;
-  border-color: #FFA500;
+  background: #cc9900;
+  border-color: #cc9900;
   color: #fff;
 }

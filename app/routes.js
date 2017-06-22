@@ -143,13 +143,10 @@ module.exports = function(app, passport) {
 //post request for submitting comment
 
     app.post('/:id/comment', isLoggedIn, function(req, res) {
-        /* Code for Author */
-        Story.findById(req.params.id, function(err, story) {
-  if (err) throw err;
-
+        
   // update the story's comment sectiion
   
-
+        backURL = req.header('Referer') || '/';
         if (req.user.facebook.name) {
             var comment_by = req.user.facebook.name;
         } else if (req.user.google.name) {
@@ -161,22 +158,21 @@ module.exports = function(app, passport) {
        var comment_message= req.body.comment;
         var comment_time = Date();
         
+        var comment = {
+            comment_message: comment_message,
+            comment_time: comment_time,
+            comment_by: comment_by
+        };
+
+         Story.update({ "_id": req.params.id }, { $push: { comments: comment } }, function(err, affected, resp) {
+            console.log(resp);
+        });
+
+
         
-        story.comments.comment_by=comment_by;
-        story.comments.comment_message=comment_message;
-        story.comments.comment_time=comment_time;
+          res.redirect(backURL);
 
-        // save the story
-        story.save(function(err) {
-         if (err) throw err;
 
-            console.log('Story successfully updated!');
-            
-        });   
-        
-        res.redirect('/profile');
-
-    });
 });
 
 
@@ -207,7 +203,8 @@ module.exports = function(app, passport) {
                 author: story[0].author,
                 user: req.user,
                 date: story[0].created_at,
-                id:  story[0]._id
+                id:  story[0]._id,
+                comments: story[0].comments
 
             });
         });
