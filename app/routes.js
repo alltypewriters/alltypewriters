@@ -89,19 +89,19 @@
      // =====================================
      // we will want this protected so you have to be logged in to visit
      // we will use route middleware to verify this (the isLoggedIn function)
-     app.get('/profile/unsungheroes', isLoggedIn, function(req, res) {
+     app.get('/profile/cat/unsungheroes', isLoggedIn, function(req, res) {
          res.render('unsungheroes.ejs', {
              user: req.user
          });
 
      });
-     app.get('/profile/beyondheadlines', isLoggedIn, function(req, res) {
+     app.get('/profile/cat/beyondheadlines', isLoggedIn, function(req, res) {
          res.render('beyondheadlines.ejs', {
              user: req.user
          });
 
      });
-     app.get('/profile/underthesun', isLoggedIn, function(req, res) {
+     app.get('/profile/cat/underthesun', isLoggedIn, function(req, res) {
          res.render('underthesun.ejs', {
              user: req.user
          });
