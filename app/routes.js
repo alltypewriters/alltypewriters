@@ -1,6 +1,7 @@
  // app/routes.js
  module.exports = function(app, passport) {
 
+     var User = require('./models/user');
      // ==================================================
      // HOME PAGE (with login links and register) ========
      // ==================================================
@@ -48,18 +49,6 @@
      }
 
      app.get('/profile', isLoggedIn, function(req, res) {
-
-         /*  Story.find(function(err, story) {
-               if (err) throw err;
-               else {
-                   total = Object.keys(story).length;
-                   for (i = 0; i < total; i++)
-                       if (story[i].author == req.user.facebook.name) {
-                           console.log(story[i]);
-                       }
-               }
-           });*/
-
          res.render('profile.ejs', {
              user: req.user // get the user out of session and pass to template
          });
@@ -74,6 +63,25 @@
      app.get('/profile/startastory', isLoggedIn, function(req, res) {
          res.render('editor.ejs')
 
+     });
+     // =====================================
+     // USER_PROFILE SECTION =================
+     // ======================================
+     // we will want this protected so you have to be logged in to visit
+     // we will use route middleware to verify this (the isLoggedIn function)
+
+     app.get('/profile/:id', isLoggedIn, function(req, res) {
+         User.find({ "_id": req.params.id }, function(err, user) {
+             if (err) throw err;
+             res.render('userprofile.ejs', {
+                 username: user[0].facebook.name,
+                 photo: user[0].facebook.photo
+
+             });
+         });
+         /*res.render('userprofile.ejs', {
+             user: req.user
+         });*/
      });
 
      // =====================================
