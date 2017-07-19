@@ -183,6 +183,96 @@
 
      });
 
+     //post request for like button
+
+     //post request for submitting comment
+
+     app.post('/:id/like', isLoggedIn, function(req, res) {
+
+         // update the story's comment sectiion
+
+         backURL = req.header('Referer') || '/';
+
+
+         var like_by=req.user._id;
+         
+
+         var likes = {
+             like_by: like_by
+         };
+         Story.find({ "_id": req.params.id }, function(err, story) {
+             if (err) throw err;
+             else {
+                 flag = 0;
+                 for (i = 0; i < story[0].likes.length; i++) {
+                     if (story[0].likes[i].like_by == like_by) {
+                         flag++;
+                         break;
+                     }
+                 }
+                 if (flag == 0) {
+                     Story.update({ "_id": req.params.id }, { $push: { likes: likes } }, function(err, affected, resp) {
+                         console.log(resp);
+                     });
+                 }
+             }
+
+         });
+
+
+
+
+         res.redirect(backURL);
+
+
+     });
+
+
+     //post request for dislike button
+
+     //post request for submitting comment
+
+     app.post('/:id/dislike', isLoggedIn, function(req, res) {
+
+         // update the story's comment sectiion
+
+         backURL = req.header('Referer') || '/';
+
+
+         var like_by=req.user._id;
+         
+
+         var likes = {
+             like_by: like_by
+         };
+         Story.find({ "_id": req.params.id }, function(err, story) {
+             if (err) throw err;
+             else {
+                 for (i = 0; i < story[0].likes.length; i++) {
+                     if (story[0].likes[i].like_by == like_by) {
+                         Story.update({ "_id": req.params.id }, { $pull: { likes: likes } }, function(err, affected, resp) {
+                         console.log("Suceesfull Dislike")
+                         console.log(resp);
+                        });
+                        break;
+                     }
+                 }
+             }
+
+         });
+
+
+
+
+         res.redirect(backURL);
+
+
+     });
+
+
+
+
+
 
      // ================================================
      // Route for JQuery Requests=======================
@@ -212,7 +302,8 @@
                  user: req.user,
                  date: story[0].created_at,
                  id: story[0]._id,
-                 comments: story[0].comments
+                 comments: story[0].comments,
+                 likes:story[0].likes
 
              });
          });
@@ -230,7 +321,8 @@
                  author: story[0].author,
                  date: story[0].created_at,
                  id: story[0]._id,
-                 comments: story[0].comments
+                 comments: story[0].comments,
+                 likes:story[0].likes
              });
          });
      });
@@ -238,13 +330,14 @@
          Story.find({ "_id": req.params.id }, function(err, story) {
              if (err) throw err;
              res.render('story.ejs', {
-                 title: story[0].title,
-                 body: story[0].body,
-                 author: story[0].author,
-                 date: story[0].created_at,
-                 id: story[0]._id,
-                 comments: story[0].comments
-             });
+                title: story[0].title,
+                body: story[0].body,
+                author: story[0].author,
+                date: story[0].created_at,
+                id: story[0]._id,
+                comments: story[0].comments,
+                likes:story[0].likes 
+            });
          });
      });
 

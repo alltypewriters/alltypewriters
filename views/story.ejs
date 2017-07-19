@@ -45,8 +45,12 @@
 		margin-left: 100px;
 	}
 	#likeButton:hover {
-    	color: red;
+    	color: #800000;
     	cursor:pointer;
+	}
+	#likeButton1 
+	{
+    	color: #800000;
 	}
 	.commentspecial{
 		background-color: #e8ecf2;
@@ -66,6 +70,18 @@
 	}
 	#comment_message{
 		padding-bottom: 10px;
+	}
+	.btn-default{
+		border-color: white;
+		background-color: white;
+		background-image: none;
+		box-shadow: none;
+	}
+	.btn-default:hover {
+		background-color: white;
+		border-color: white;
+		background-image: none;
+		box-shadow: none;
 	}
 </style>	
 </head>
@@ -117,7 +133,29 @@
 			<%- body %>
 			<br>
 			<!--like button-->
-			<i class="fa fa-heart fa-3x" id="likeButton"></i>
+			
+			<%	var flag=0;
+				for(var i=0;i<likes.length;i++){
+				console.log(likes[i].like_by)
+				console.log(user._id)
+				if(likes[i].like_by==user._id){
+					flag=1;				
+					break;
+				}}
+				console.log("Flag:")
+				console.log(flag)
+				if(flag==0){%>
+					<form role="form" action="/<%=id%>/like" method="post">
+						<button type="Submit" class="btn btn-default"><i class="fa fa-heart fa-3x" id="likeButton"></i></button>
+					</form>
+				
+				<%}
+				else{%>
+				<form role="form" action="/<%=id%>/dislike" method="post">
+						<button type="Submit" class="btn btn-default"><i class="fa fa-heart fa-3x" id="likeButton1"></i></button>
+					</form>
+				<%}%>
+				
 		</div>
 		
 		<div class="col-xs-13">
