@@ -8,7 +8,8 @@
      app.get('/', function(req, res) {
          res.render('index.ejs', {
              message: req.flash('loginMessage'),
-             message1: req.flash('signupMessage')
+             message1: req.flash('signupMessage'),
+
          });
      });
 
@@ -194,30 +195,22 @@
          backURL = req.header('Referer') || '/';
 
 
-         var like_by=req.user._id;
-         
+         var like_by = req.user._id;
 
-         var likes = {
-             like_by: like_by
-         };
-         Story.find({ "_id": req.params.id }, function(err, story) {
-             if (err) throw err;
-             else {
-                 flag = 0;
-                 for (i = 0; i < story[0].likes.length; i++) {
-                     if (story[0].likes[i].like_by == like_by) {
-                         flag++;
-                         break;
-                     }
-                 }
-                 if (flag == 0) {
-                     Story.update({ "_id": req.params.id }, { $push: { likes: likes } }, function(err, affected, resp) {
-                         console.log(resp);
-                     });
-                 }
-             }
 
+         //var likes = {
+         //  like_by: like_by
+         //};
+
+         Story.update({ "_id": req.params.id }, { $push: { likes: like_by } , "$inc": { "likes_no": 1 } }, function(err, affected, resp) {
+             console.log("Suceesfull Like");
+             
+             console.log(resp);
          });
+
+
+
+
 
 
 
@@ -239,27 +232,19 @@
          backURL = req.header('Referer') || '/';
 
 
-         var like_by=req.user._id;
-         
+         var like_by = req.user._id;
 
-         var likes = {
-             like_by: like_by
-         };
-         Story.find({ "_id": req.params.id }, function(err, story) {
-             if (err) throw err;
-             else {
-                 for (i = 0; i < story[0].likes.length; i++) {
-                     if (story[0].likes[i].like_by == like_by) {
-                         Story.update({ "_id": req.params.id }, { $pull: { likes: likes } }, function(err, affected, resp) {
-                         console.log("Suceesfull Dislike")
-                         console.log(resp);
-                        });
-                        break;
-                     }
-                 }
-             }
 
+         //var likes = {
+         //  like_by: like_by
+         //};
+         Story.update({ "_id": req.params.id }, { $pull: { likes: like_by }, "$inc": { "likes_no": -1 }  }, function(err, affected, resp) {
+             console.log("Suceesfull Dislike");
+             console.log(resp);
          });
+
+
+
 
 
 
@@ -287,6 +272,14 @@
              }
          });
      });
+     app.get('/trending', function(req, res) {
+         Story.find().sort({ "likes_no": -1 }).limit(10).exec(function(err,story) {
+            if (err) throw err;
+             else {
+                 res.json(story);
+             }
+        });
+     });
      // ================================================
      // Page for single story(0.1)======================
      // ================================================
@@ -299,11 +292,12 @@
                  title: story[0].title,
                  body: story[0].body,
                  author: story[0].author,
+                 category: story[0].category,
                  user: req.user,
                  date: story[0].created_at,
                  id: story[0]._id,
                  comments: story[0].comments,
-                 likes:story[0].likes
+                 likes: story[0].likes
 
              });
          });
@@ -319,10 +313,12 @@
                  title: story[0].title,
                  body: story[0].body,
                  author: story[0].author,
+                 category: story[0].category,
+                 user: req.user,
                  date: story[0].created_at,
                  id: story[0]._id,
                  comments: story[0].comments,
-                 likes:story[0].likes
+                 likes: story[0].likes
              });
          });
      });
@@ -330,14 +326,16 @@
          Story.find({ "_id": req.params.id }, function(err, story) {
              if (err) throw err;
              res.render('story.ejs', {
-                title: story[0].title,
-                body: story[0].body,
-                author: story[0].author,
-                date: story[0].created_at,
-                id: story[0]._id,
-                comments: story[0].comments,
-                likes:story[0].likes 
-            });
+                 title: story[0].title,
+                 body: story[0].body,
+                 author: story[0].author,
+                 category: story[0].category,
+                 user: req.user,
+                 date: story[0].created_at,
+                 id: story[0]._id,
+                 comments: story[0].comments,
+                 likes: story[0].likes
+             });
          });
      });
 

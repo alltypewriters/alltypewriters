@@ -10,9 +10,10 @@ var storySchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
-    likes: [{
-        like_by: String
-    }],
+    likes: [String],
+    likes_no:{
+        type: Number,
+    },
     comments: [{
         comment_message: String,
         comment_time: String,

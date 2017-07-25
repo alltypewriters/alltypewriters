@@ -28,6 +28,10 @@
 	background-color:white
 
 	}
+     #trending{
+
+        text-align: center;
+    }
 </style>
 
 
@@ -81,11 +85,11 @@
 <h1 class="text-center"><strong>Under The Sun<strong></h1>
 </div>
 
-<section id="services" class="home-services">
-<div class="container mystory">
-	
-</div>
-</section>
+<section id="trending">
+        
+            <div class="container mystory"></div>
+        
+                </section>
 
 
 
@@ -114,16 +118,17 @@
             
             data.forEach(function(val){
                 var html="";
+                 var author="";
                 if(val.verified==false && val.category=="Under the Sun"){
                 
                 
-                    var str=val["body"].slice(0, 100);
-                    html+=str+"<br>";
-                    html+= val["author"]+"<br>";
+                    var str=val["body"].slice(1, 250);
+                    html+=str+"...<br>";
+                    author= val["author"]+"<br>";
                     var url="/profile/underthesun/"+val._id;
 
 
-                    $(".mystory").append("<div class='col-xs-4'><div class='service-single text-center wow fadeInDown'><div class='box-top'><h2>"+val.title+"</h2></div><div class='box-down'><p>"+ html +"</p><div class='smooth'><a href='" +url + "'  class='btn btn-holly'>See More</a></div></div></div></div>"); 
+                   $(".mystory").append("<div class='col-md-4'><br><h4>"+val.title+"</h4><br><p>"+html+"</p><br><h5>"+author+"</h5><a href='" +url + "'class='btn btn-holly'>See More</a></div>"); 
                 }
                                 
             });
