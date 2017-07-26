@@ -24,8 +24,11 @@ var userSchema = mongoose.Schema({
         token: String,
         email: String,
         name: String
-    }
-
+    },
+    about: {
+        type: String,
+        default: " Update your Intro-Text Here !"
+    },
 });
 
 // methods =====================

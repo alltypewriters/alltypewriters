@@ -72,11 +72,23 @@
      // we will use route middleware to verify this (the isLoggedIn function)
 
      app.get('/profile/:id', isLoggedIn, function(req, res) {
+         if (req.user.facebook.name) {
+             var user_name = req.user.facebook.name;
+         } else if (req.user.google.name) {
+             var user_name = req.user.google.name;
+         } else {
+             var user_name = req.user.local.name;
+         }
+         
          User.find({ "_id": req.params.id }, function(err, user) {
              if (err) throw err;
+
              res.render('userprofile.ejs', {
+                user_name: user_name,
                  username: user[0].facebook.name,
-                 photo: user[0].facebook.photo
+                 photo: user[0].facebook.photo,
+                 id: user[0]._id,
+                 about: user[0].about
 
              });
          });
@@ -84,6 +96,33 @@
              user: req.user
          });*/
      });
+
+
+      // =====================================
+     // USER_ABOUT-ME SECTION =================
+     // ======================================
+     // we will want this protected so you have to be logged in to visit
+     // we will use route middleware to verify this (the isLoggedIn function)
+
+app.post('/aboutauthor/:id', isLoggedIn, function(req, res) {
+    User.find({ "_id": req.params.id }, function(err, user) {
+             if (err) throw err;
+             var about=req.body.about;
+             console.log(about)
+             User.update({ "_id": req.params.id }, { $set: { about: about} }, function(err, affected, resp) {
+             console.log(resp);
+         });
+
+         });
+         res.redirect("/profile");    
+
+});
+
+
+
+
+
+
 
      // =====================================
      // CATEGORY GET REQUESTS================
@@ -129,7 +168,10 @@
          } else {
              var author = req.user.local.name;
          }
-
+         var author_about=req.user.about;
+        if (req.user.facebook.name) {
+             var author_image = req.user.facebook.photo;
+         } 
          var category = req.body.category;
          var title = req.body.title;
          var body = req.body.body;
@@ -139,7 +181,9 @@
              title: title,
              body: body,
              author: author,
-             created_at: created_at
+             created_at: created_at,
+             author_about: author_about,
+             author_image: author_image
          });
          // save the story
          newStory.save(function(err) {
@@ -297,7 +341,9 @@
                  date: story[0].created_at,
                  id: story[0]._id,
                  comments: story[0].comments,
-                 likes: story[0].likes
+                 likes: story[0].likes,
+                 author_about: story[0].author_about,
+                 author_image: story[0].author_image
 
              });
          });
@@ -318,7 +364,9 @@
                  date: story[0].created_at,
                  id: story[0]._id,
                  comments: story[0].comments,
-                 likes: story[0].likes
+                 likes: story[0].likes,
+                 author_about: story[0].author_about,
+                 author_image: story[0].author_image
              });
          });
      });
@@ -334,7 +382,9 @@
                  date: story[0].created_at,
                  id: story[0]._id,
                  comments: story[0].comments,
-                 likes: story[0].likes
+                 likes: story[0].likes,
+                 author_about: story[0].author_about,
+                 author_image: story[0].author_image
              });
          });
      });

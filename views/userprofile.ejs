@@ -1,48 +1,47 @@
 <html lang="en">
-<head>
 
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>All TYPE WRITERS</title>
-
     <!-- Bootstrap Core CSS -->
-    
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" type="text/css"> <!-- load bootstrap css -->
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css" type="text/css"> <!-- load bootstrap-theme css -->
-    <link rel="stylesheet" href="/sidebar/sidebarcss.css" type="text/css"> <!-- Sidebartheme-->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" type="text/css">
+    <!-- load bootstrap css -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css" type="text/css">
+    <!-- load bootstrap-theme css -->
+    <link rel="stylesheet" href="/sidebar/sidebarcss.css" type="text/css">
+    <!-- Sidebartheme-->
     <!-- Theme CSS -->
     <link href="/index/css/freelancer.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="/index/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <style>
-        .container-fluid{
-            padding-top: 150px;
-            padding-left: 100px;
-        }
-        .img-profile {
+    .container-fluid {
+        padding-top: 150px;
+        padding-left: 100px;
+    }
+
+    .img-profile {
         border-radius: 50%;
-        }
-        .col-xs-11{
-            margin-top: 30px;
-        }
-        .aboutMe{
-            text-align: justify;
-        }
+    }
+
+    .col-xs-11 {
+        margin-top: 30px;
+    }
+
+    .aboutMe {
+        text-align: justify;
+    }
     </style>
-    
 </head>
 
 <body id="page-top" class="index">
-
-<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
-
+    <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
@@ -53,13 +52,12 @@
                 </button>
                 <a class="navbar-brand" href="#page-top">All Type Writers</a>
             </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
                         <a href="#page-top"></a>
-                    </li>                    
+                    </li>
                     <li class="page-scroll">
                         <a href="/profile/startastory" target="_blank">Start a story</a>
                     </li>
@@ -67,63 +65,101 @@
                         <a href="/logout">Logout</a>
                     </li>
                     <%if(username) {%>
-                    <li class="page-scroll">
-                        <a href="#menu-toggle"  id="menu-toggle">Hi! <%=username%> </a>
-                    </li><%}%>
+                        <li class="page-scroll">
+                            <a href="#menu-toggle" id="menu-toggle">Hi! <%=username%> </a>
+                        </li>
+                        <%}%>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
-            <div class="container-fluid">
-                <div class="col-xs-3">
-                    <%if (photo) {%>
-                    <a href="#"> <span style="margin-left:10px;"><img class="img-profile"src="<%=photo%>" alt="facebook-image here"></span></a>
-                    <%}%>  
+    <div class="container-fluid">
+        <div class="col-xs-3">
+            <%if (photo) {%>
+                <a href="#"> <span style="margin-left:10px;"><img class="img-profile"src="<%=photo%>" alt="facebook-image here"></span></a>
+                <%}%>
+        </div>
+        <div class="col-xs-7">
+            <h3>About me</h3>
+            <p class="aboutMe">
+                <%=about%>
+            </p>
+            <br>
+            <a href="" data-toggle="modal" data-target="#modal-about"> Update</a>
+        </div>
+        <div class="col-xs-11">
+            <h3>Stories</h3>
+            <p id="user" hidden="true"><%=user_name%></p>
+            <div class="mystory"></div>
+        </div>
+    </div>
+    <!--About-me-Modal-->
+    <div class="modal fade" id="modal-about" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <h3 class="modal-title" id="modal-register-label">About Me</h3>
                 </div>
-                <div class="col-xs-7">
-                   <h3>About me</h3>
-                   <p class="aboutMe"> 
-                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.   
-                   </p>
-                   <br>
-                   <button type="button" class="btn btn-primary">Update</button>
-
-                </div>
-                <div class="col-xs-11">
-                   <h3>Stories</h3>
+                <div class="modal-body">
+                    <form action="/aboutauthor/<%=id%>" method="post">
+                        <div class="form-group">
+                            <textarea rows="8" cols="300" class="form-control" name="about" placeholder="Hey! Speak about Yourself..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="about">Sure!</button>
+                    </form>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-<!-- jQuery -->
-    
+        </div>
+    </div>
+    <!-- jQuery -->
     <script src="/assets/js/jquery-3.2.1.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="/bootstrap/js/bootstrap.min.js"></script>
-
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
     <!-- Contact Form JavaScript -->
     <script src="/index/js/jqBootstrapValidation.js"></script>
     <script src="/index/js/contact_me.js"></script>
-
     <!-- Theme JavaScript -->
     <script src="/index/js/freelancer.min.js"></script>
+<script>
+       $(document).ready(function() {
+           
+        $.getJSON("http://localhost:8080/verified",
+        function(data){
+            
+            data.forEach(function(val){
+                var html="";
+                var user=document.querySelector("#user").innerHTML;
+                var author="";
+                console.log(user)
+                if(val.verified==false && val.author==user){
+                
+                
+                    var str=val["body"].slice(1, 250);
+                    html+=str+"...<br>";
+                    author= val["author"]+"<br>";
+                    var url="/profile/unsungheroes/"+val._id;
+
+
+                     $(".mystory").append("<div class='col-md-4'><br><h4>"+val.title+"</h4><br><a href='" +url + "'class='btn btn-holly'>See More</a></div>"); 
+                }
+                                
+            });
+            
+        });
+
+
+
+    });        
+
+
+</script>
 
 </body>
 

@@ -18,17 +18,24 @@
     <!-- Theme CSS -->
     <link href="index/css/freelancer.css" rel="stylesheet">
 
+
+
     <!-- Custom Fonts -->
     <link href="index/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
     
     <!--BOX for displayinf categories css-->
     <link rel="stylesheet" href="box.css" type="text/css"> <!-- Sidebartheme-->
     <style>
+    body{
+        background-color: black;
+    }
     .container-fluid{
-        margin-left: 200px;
-        margin-top: 60px;
+        margin-left: 300px;
+        margin-top: 140px;
+        padding-bottom: 30px;
     }    
     .col-xs-4{
         /*border-top: 1px solid;
@@ -38,6 +45,9 @@
     }
     .category-name{
         text-align: center;
+        font-family: 'Arvo', serif;
+        font-size: 20px;
+        color: white;
     }
     .category-details{
         text-align: justify;
@@ -45,7 +55,71 @@
     .category-link{
         text-align: center;
     }    
+    .col-md-3 {
+    margin-top: 0px;
+    padding-bottom: 10px;
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 0 10px #e8e8e8;
+    margin-left: 0px;
+    width: 400px;
+    text-align: center;
+
+    height: 500 px;
+    display: block;
+    }
+    #sidebar-wrapper{
+        display: block;
+        height:1200px;
+    }
+
+.mystory {
+    padding: 0px 0px 0px 0px;
+}
+
+.col-md-3 .btn-holly {
+    background: #2c3e50;
+    border: 1px solid #f0f0f0;
+    border-radius: 20px;
+    color: white;
+}
+
+.col-md-3 .btn-holly:hover {
+    background: #18bc9c;
+    border-color: #DFE9EC;
+    color: white;
+}
+    .sun{
+    background-image: url('assets/img/sun.jpeg');
+    background-size:100%;
+    height: 250px;
+    background-repeat: no-repeat;
     
+    }
+    .headlines{
+    background-image: url('assets/img/newspaper.jpeg');
+    background-size:100%;
+    height: 250px;
+    background-repeat: no-repeat;
+    
+    }
+   
+    .hero{
+    background-image: url('assets/img/hero.jpeg');
+    background-size:100%;
+    height: 250px;
+    background-repeat: no-repeat;
+    
+    }
+      .others{
+    background-image: url('assets/img/others.jpeg');
+    background-size:100%;
+    height: 250px;
+    background-repeat: no-repeat;
+    
+    }
+    .black{
+        color: black;
+    }
     </style>
     
     
@@ -106,8 +180,6 @@
 
 <div class="container">
     <div class="row">
-        <h2>Some text</h2>
-        <hr/>
         
          <div id="wrapper">
         
@@ -121,6 +193,7 @@
                        <!-- <a href="#menu-toggle"  id="menu-toggle" style="margin-top:20px;float:right;" > <i class="fa fa-bars " style="font-size:20px !Important;" aria-hidden="true" aria-hidden="true"></i> -->
                     
                 </li>
+                <br><br>
                 <%if (user.facebook.photo) {%>               
                 <li>
                     <a href="#"> <span style="margin-left:10px;"><img class="img-profile"src="<%=user.facebook.photo%>" alt="facebook-image here"></span>  </a><
@@ -134,7 +207,7 @@
                     <a href="#" style="color: white"><span style="margin-left:25px;">My Stories</span> </a>
                 </li>                
             </ul>
-        </div></div>
+        </div></div></div></div>
         <!-- /#sidebar-wrapper -->
 
     
@@ -143,45 +216,20 @@
         <!--Bootstrap boxes to display categories-->
 
         <div class="container-fluid">
-            <div class="col-xs-4">
-                <h3 class="category-name">Unsung Heros</h2>
-                <p class="category-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <h4 class="category-link">
-                    <a href="/profile/cat/unsungheroes" title="Title Link">Read More</a>
-                </h5>>
-            </div>
-            <div class="col-xs-4">
-                <h3 class="category-name">Beyond Headlines</h2>
-                <p class="category-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <h4 class="category-link">
-                    <a href="/profile/cat/beyondheadlines" title="Title Link">Read More</a>
-                </h5>
-            </div>
-            <div class="col-xs-4">
-                <h3 class="category-name">Under the Sun</h2>
-                <p class="category-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod stempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <h4 class="category-link">
-                    <a href="/profile/cat/underthesun" title="Title Link">Read More</a>
-                </h5>
-            </div>
-        </div>
-                
             
-                    
+            
+            
+               
+            <div class='col-md-3 hero'><br><h2 class="category-name">Unsung Heroes</h2><br><br><br><br><br><a href="/profile/cat/unsungheroes" class='btn btn-holly'>Read More</a></div> 
+            
+               
+            <div class='col-md-3 headlines'><br><h2 class="category-name">Beyond Headlines</h2><br><br><br><br><br><a href="/profile/cat/beyondheadlines" class='btn btn-holly'>Read More</a></div>
+
+            <div class='col-md-3 sun'><br><h2 class="category-name black">Under the sun</h2><br><br><br><br><br><a href="/profile/cat/underthesun" class='btn btn-holly'>Read More</a>
+                </div>
+
+            <div class='col-md-3 others'><br><h2 class="category-name black">Others</h2><br><br><br><br><br><a href="" class='btn btn-holly'>Read More</a></div>
+        </div>     
 
 
 

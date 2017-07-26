@@ -103,24 +103,36 @@ h6 {
     padding-top: -30px;
     padding-left: 5px;
 }
-.btn-facebook{
-	padding-right: 6px;
+
+.btn-facebook {
+    padding-right: 6px;
 }
-.btn-google-plus{
-	padding-left: 0px;
-	padding-right: 0px;
+
+.btn-google-plus {
+    padding-left: 0px;
+    padding-right: 0px;
 }
-.btn-twitter{
-	padding-left: 0px;
+
+.btn-twitter {
+    padding-left: 0px;
 }
-.googleplus{
-	color: 	#c14646;
+
+.googleplus {
+    color: #c14646;
 }
-.facebook{
-	color: #365899;
+
+.facebook {
+    color: #365899;
 }
-.twitter{
-	color: #1c94e0;
+
+.twitter {
+    color: #1c94e0;
+}
+ .img-profile {
+        border-radius: 50%;
+}
+#authorAbout{
+    text-align: justify;
 }
 </style>
 </head>
@@ -164,9 +176,19 @@ h6 {
                     <li class="page-scroll">
                         <a href="/profile/startastory" target="_blank">Start a story</a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="/logout">Logout</a>
+                    <% try{
+                    if(user._id){
+                    %>
+                        <li class="page-scroll">
+                            <a href="/logout">Logout</a>
+                        </li>
+                        <% }} catch(err){
+                    	 %>
+                    	  <li class="page-scroll">
+                        
+                		<li><a href="" data-toggle="modal" data-target="#modal-login"> Login</a></li>
                     </li>
+                    <%} %>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -181,7 +203,7 @@ h6 {
         <br>
         <div class="col-xs-9">
             <h4>By,<%= author %></h4>
-        	<h6 id="date_out"></h6>
+            <h6 id="date_out"></h6>
         </div>
         <div class="col-xs-3">
             <h6 id="date_in" hidden="true"><%= date %></h6>
@@ -193,6 +215,7 @@ h6 {
                 <br>
                 <!--like button-->
                 <%
+				try{
 				console.log(likes)
 				console.log(likes.indexOf(user._id))
 			    if(likes.indexOf(user._id)==-1){
@@ -209,15 +232,23 @@ h6 {
                             <p id="likeCounter">
                                 <%=likes.length %> Likes</p>
                         </form>
-                        <%}			
+                        <%}	}		
+                        catch(err){%>
+                       
+                                <button class="btn btn-default"><i class="fa fa-heart fa-3x" id="likeButton"></i></button>
+                                <p id="likeCounter">
+                                    <%=likes.length %> Likes</p>
+                            
+                            <%
+                        	console.log(err);
+                        }
 				
 			%>
-                            <!--Share button-->
-                            <a id="shareBtn" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook fa-2x facebook"></i></a>
-                            
-                            <a class="btn btn-social-icon btn-google-plus"><div class="g-plus" data-action="share" data-height="24"></div></a>
-                            
-                            
+                                <!--Share button-->
+                                <a id="shareBtn" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook fa-2x facebook"></i></a>
+                                <a class="btn btn-social-icon btn-google-plus">
+                                    <div class="g-plus" data-action="share" data-height="24"></div>
+                                </a>
         </div>
         <div class="col-xs-13">
             <h3>Comments:</h3>
@@ -241,6 +272,63 @@ h6 {
                         <button type="Submit" class="btn btn-primary btn-info-full next-step">Praise!</button>
                     </form>
                 </div>
+
+                <br><br><br>
+                <div class="col-xs-3">
+                </div>                
+                <div class="col-xs-9">
+                    <h4>About The Author</h4>
+                </div>
+                <div class="col-xs-3">
+                    <%if (author_image!="undefined") {%>
+                        <a href="#"> <span style="margin-left:10px;"><img class="img-profile"src="<%=author_image%>" alt="facebook-image here"></span></a>
+                    <%}%>
+                                        
+                </div>
+                <div class="col-xs-9">
+                <p id="authorAbout">                   
+                    <%=author_about%>                    
+                </p>
+                </div>
+                
+
+
+
+      <!--Login-Modal-->
+         <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+    <div class="modal-dialog modal-sm"> 
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+          <h3 class="modal-title" id="modal-register-label">Login</h3>
+        </div>
+        <div class="modal-body">     
+
+          <form action="/login" method="post">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="email" required>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="loginButton">Login</button>
+        <a href="/auth/facebook" class="btn btn-primary btn-block"><span class="fa fa-facebook"></span> Facebook</a>
+
+        <a href="/auth/google" class="btn btn-danger btn-block"><span class="fa fa-google-plus"></span> Google</a>
+</form>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+    
     </div>
     <p hidden=true id="category">
         <%=category%>
@@ -258,8 +346,9 @@ h6 {
     <script src="/index/js/freelancer.min.js"></script>
     <!--Share button Javascript-->
     <script>
-    date_in=document.querySelector("#date_in").innerHTML.slice(0,15);
-    document.querySelector("#date_out").innerHTML=date_in;
+    
+    date_in = document.querySelector("#date_in").innerHTML.slice(0, 15);
+    document.querySelector("#date_out").innerHTML = date_in;
     category = document.querySelector('#category').innerHTML.toLowerCase().replace(/ /g, '');
     story_id = document.querySelector('#story_id').innerHTML;
     url = "http://localhost:8080/profile/" + category + "/" + story_id;
@@ -273,8 +362,6 @@ h6 {
     }
     </script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-
-
 </body>
 
 </html>
