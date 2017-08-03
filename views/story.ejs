@@ -43,6 +43,7 @@ h1 {
     padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 40px;
+    line-height: 250%;
 }
 
 #fb-root {
@@ -133,6 +134,10 @@ h6 {
 }
 #authorAbout{
     text-align: justify;
+    line-height: 170%;
+}
+.spl{
+    border-top: 1px solid;
 }
 </style>
 </head>
@@ -275,9 +280,10 @@ h6 {
 
                 <br><br><br>
                 <div class="col-xs-3">
-                </div>                
+                </div>
+                              
                 <div class="col-xs-9">
-                    <h4>About The Author</h4>
+                    <h3>About The Author</h3>
                 </div>
                 <div class="col-xs-3">
                     <%if (author_image!="undefined") {%>
@@ -287,10 +293,11 @@ h6 {
                 </div>
                 <div class="col-xs-9">
                 <p id="authorAbout">                   
-                    <%=author_about%>                    
+                                        
                 </p>
                 </div>
-                
+            
+                <p id="author_id" hidden="true"><%=author_id%></p>
 
 
 
@@ -360,6 +367,30 @@ h6 {
             href: url,
         }, function(response) {});
     }
+    </script>
+    <script >
+        
+        $(document).ready(function() {
+            var author_id= $("#author_id").text();
+            console.log(author_id);
+            url="http://localhost:8080/author/"+author_id
+        $.getJSON(url,
+        function(data){
+            console.log(data)
+            data.forEach(function(val){
+                
+
+                    console.log(val.about)
+                     $("#authorAbout").html(val.about); 
+                
+                                
+            });
+            
+        });
+
+
+
+    });  
     </script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>

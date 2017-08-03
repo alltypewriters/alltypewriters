@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css" type="text/css">
     <!-- load bootstrap-theme css -->
     <link rel="stylesheet" href="/sidebar/sidebarcss.css" type="text/css">
+    <link rel="stylesheet" href="/layout.css" type="text/css">
     <!-- Sidebartheme-->
     <!-- Theme CSS -->
     <link href="/index/css/freelancer.css" rel="stylesheet">
@@ -26,17 +27,34 @@
         padding-left: 100px;
     }
 
-    .img-profile {
+    .img-responsive {
         border-radius: 50%;
+        float: left;
+        padding-right: 20px;
     }
 
     .col-xs-11 {
         margin-top: 30px;
+        padding-bottom: 80px;
     }
 
     .aboutMe {
         text-align: justify;
     }
+    .update{
+        background: #2c3e50;
+        border: 1px solid #f0f0f0;
+        color: white;
+    }
+    .update:hover{
+        background: #18bc9c;
+        border-color: #DFE9EC;
+        color: white;
+    }
+    #updateAboutMe{
+        color: white;
+    }
+    
     </style>
 </head>
 
@@ -66,7 +84,7 @@
                     </li>
                     <%if(username) {%>
                         <li class="page-scroll">
-                            <a href="#menu-toggle" id="menu-toggle">Hi! <%=username%> </a>
+                            <a>Hi! <%=username%> </a>
                         </li>
                         <%}%>
                 </ul>
@@ -76,23 +94,28 @@
         <!-- /.container-fluid -->
     </nav>
     <div class="container-fluid">
-        <div class="col-xs-3">
-            <%if (photo) {%>
-                <a href="#"> <span style="margin-left:10px;"><img class="img-profile"src="<%=photo%>" alt="facebook-image here"></span></a>
-                <%}%>
-        </div>
-        <div class="col-xs-7">
+        
+        
+        <div class="col-xs-11">
             <h3>About me</h3>
+            <br><br>
+            <%if (photo) {%>
+                <a href="#"> <span style="margin-left:10px;"><img class="img-responsive"src="<%=photo%>" alt="facebook-image here"></span></a>
+                <%}%>
             <p class="aboutMe">
                 <%=about%>
             </p>
             <br>
-            <a href="" data-toggle="modal" data-target="#modal-about"> Update</a>
+            <br>
+            <br>
+            <button class="btn btn-primary update"><a id="updateAboutMe" href="" data-toggle="modal" data-target="#modal-about"> Update</a></button>
         </div>
         <div class="col-xs-11">
-            <h3>Stories</h3>
-            <p id="user" hidden="true"><%=user_name%></p>
-            <div class="mystory"></div>
+            <h3> My Stories</h3>
+            <p id="userId" hidden="true"><%=id%></p>
+            <div class="mystory">
+                <img src="/assets/img/ajax-loader.gif" class="loaderImage" hidden="true">
+            </div>
         </div>
     </div>
     <!--About-me-Modal-->
@@ -129,22 +152,21 @@
     <script src="/index/js/freelancer.min.js"></script>
 <script>
        $(document).ready(function() {
-           
+          $(".loaderImage").show();
         $.getJSON("http://localhost:8080/verified",
         function(data){
-            
+                $(".loaderImage").hide();
             data.forEach(function(val){
                 var html="";
-                var user=document.querySelector("#user").innerHTML;
+                var userId=document.querySelector("#userId").innerHTML;
                 var author="";
-                console.log(user)
-                if(val.verified==false && val.author==user){
+                if(val.author_id==userId){
                 
                 
                     var str=val["body"].slice(1, 250);
                     html+=str+"...<br>";
                     author= val["author"]+"<br>";
-                    var url="/profile/unsungheroes/"+val._id;
+                    var url="/profile/mystory/"+val._id;
 
 
                      $(".mystory").append("<div class='col-md-4'><br><h4>"+val.title+"</h4><br><a href='" +url + "'class='btn btn-holly'>See More</a></div>"); 

@@ -1,190 +1,208 @@
 <html>
+
 <head>
     <title>All Type Writers</title>
-     <!-- Bootstrap Core CSS -->
-    
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" type="text/css"> <!-- load bootstrap css -->
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css" type="text/css"> <!-- load bootstrap-theme css -->
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" type="text/css">
+    <!-- load bootstrap css -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css" type="text/css">
+    <!-- load bootstrap-theme css -->
     <link rel="stylesheet" href="/editor/formcss.css" type="text/css">
     <!-- Include stylesheet for Text-Editor -->
-        <link href="https://cdn.quilljs.com/1.2.5/quill.snow.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.2.5/quill.snow.css" rel="stylesheet">
 </head>
 
-
-
-
-
 <body>
-
-<div class="container">
-    <div class="row">
-        <section>
-        <div class="wizard">
-            <div class="wizard-inner">
-                <div class="connecting-line"></div>
-                <ul class="nav nav-tabs" role="tablist">
-
-                    <li role="presentation" class="active">
-                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+    <div class="container">
+        <div class="row">
+            <section>
+                <div class="wizard">
+                    <div class="wizard-inner">
+                        <div class="connecting-line"></div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-folder-open"></i>
                             </span>
                         </a>
-                    </li>
-
-                    <li role="presentation" class="disabled">
-                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-forward"></i>
                             </span>
                         </a>
-                    </li>
-                    <li role="presentation" class="disabled">
-                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-pencil"></i>
                             </span>
                         </a>
-                    </li>
-
-                    <li role="presentation" class="disabled">
-                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-ok"></i>
                             </span>
                         </a>
-                    </li>
-                </ul>
-            </div>
-
-            <form action="/profile/startastory" method="post">
-                <div class="tab-content">
-                    <div class="tab-pane active" role="tabpanel" id="step1">
-                        <h3>Step 1</h3>
-                        <p><strong>Select a category</strong></p>
-                        
-                        <div class="form-group">
-                                <div class="radio">
-                                <label><input type="radio" name="category" value="Unsung Heroes">Unsung Heroes</label> 
-                                </div>
-                                <div class="radio">
-                                <label><input type="radio" name="category" value="Beyond Headlines">Beyond Headlines</label>
-                                </div>
-                                <div class="radio">
-                                <label><input type="radio" name="category" value="Under the Sun">Under the Sun</label>
-                                </div>
-                        </div>
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                            </li>
                         </ul>
                     </div>
-                    
-                    <div class="tab-pane" role="tabpanel" id="step2">
-                        <h3>Step 2</h3>
-                        <div class="form-group">
-                            <p>Add a title</p>
-                            <input type="text" class="form-control" name="title">
-                        </div>
-
-                        <ul class="list-inline pull-right"><br><br>
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
-                        </ul>
-                    </div>
-                    <div class="tab-pane" role="tabpanel" id="step3">
-                         <h3>Step 3</h3>
-                         <!--Text-Editor-->
-                            <div class="form-group">
-                                <!-- Create the editor container -->
-                               <input name="about" type="hidden">
-                                <div id="editor">
-                                <p>Hello World!</p>
-                                <p>Some initial <strong>bold</strong> text</p>
-                                <p><br></p>
+                    <form action="/profile/startastory" method="post">
+                        <div class="tab-content">
+                            <div class="tab-pane active" role="tabpanel" id="step1">
+                                <h3>Step 1</h3>
+                                <p><strong>Select a category</strong></p>
+                                <div class="form-group">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="category" value="Unsung Heroes">Unsung Heroes</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="category" value="Beyond Headlines">Beyond Headlines</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="category" value="Under the Sun">Under the Sun</label>
+                                    </div>
                                 </div>
+                                <ul class="list-inline pull-right">
+                                    <li>
+                                        <button type="button" class="btn btn-primary next-step">Save and continue</button>
+                                    </li>
+                                </ul>
                             </div>
-                            
-
-                            <ul class="list-inline pull-right">
-                            
-
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="Submit" class="btn btn-primary btn-info-full next-step">Submit</button></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tab-pane" role="tabpanel" id="complete">
-                        <h3>Complete</h3>
-                        <p>You have successfully completed all steps.</p>
-                    </div>
-                    <div class="clearfix"></div>
+                            <div class="tab-pane" role="tabpanel" id="step2">
+                                <h3>Step 2</h3>
+                                <div class="form-group">
+                                    <p>Add a title</p>
+                                    <input type="text" class="form-control" name="title">
+                                </div>
+                                <ul class="list-inline pull-right">
+                                    <br>
+                                    <br>
+                                    <li>
+                                        <button type="button" class="btn btn-default prev-step">Previous</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="btn btn-primary next-step nexter">Save and continue</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="step3">
+                                <h3>Step 3</h3>
+                                <!--Text-Editor-->
+                                <div class="form-group">
+                                    <!-- Create the editor container -->
+                                    <input name="about" type="hidden">
+                                    <div id="editor">
+                                        <p>Hello World!</p>
+                                        <p>Some initial <strong>bold</strong> text</p>
+                                        <p>
+                                            <br>
+                                        </p>
+                                    </div>
+                                </div>
+                                <ul class="list-inline pull-right">
+                                    <li>
+                                        <button type="button" class="btn btn-default prev-step prever">Previous</button>
+                                    </li>
+                                    <li>
+                                        <button type="Submit" class="btn btn-primary btn-info-full next-step ">Submit</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="complete">
+                                <h3>Complete</h3>
+                                <p>You have successfully completed all steps.</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </section>
         </div>
-    </section>
-   </div>
-</div>
-
-<!-- jQuery -->
-    
+    </div>
+    <!-- jQuery -->
     <script src="/assets/js/jquery-3.2.1.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <!--Form Javascript-->
-    <script src="/editor/form.js"></script> 
-
-
+    <script src="/editor/form.js"></script>
     <!-- Text-Editor-->
     <!-- Include the Quill library -->
     <script src="https://cdn.quilljs.com/1.2.5/quill.js"></script>
-
     <!-- Initialize Quill editor -->
-        <script>
-            var quill = new Quill('#editor', {
-  modules: {
-    toolbar: [
-      ['bold', 'italic'],
-      ['link', 'blockquote', 'code-block', 'image'],
-      [{ list: 'ordered' }, { list: 'bullet' }]
-    ]
-  },
-  placeholder: 'Compose an epic...',
-            theme: 'snow'
+    <script>
+    $(document).ready(function() {
+        $(".next-step").click(function(event) {
+            if ($('input[name=category]:checked').val() == undefined) {
+                $(".row").append("<div class='alert alert-warning fade in'> <strong>Warning!</strong> All Fields are Mandatory</div>")
+                $(".prev-step").click();
+                setTimeout(function() { $(".alert-warning").remove(); }, 1500);
+
+
+            }
+
         });
-$(document).ready(function() {
-    // process the form
-    $('form').submit(function(event) {
-        var about = document.querySelector('input[name=about]');
-        about.value = JSON.stringify(quill.root.innerHTML);
-        console.log(about.value);
-        // get the form data
-        // there are many ways to get this data using jQuery (you can use the class or id also)
-        var formData = {
-            'category'           : $('input[name=category]:checked').val(),
-            'title'             : $('input[name=title]').val(),
-            'body'               : about.value
-        };
-        // process the form
-        $.ajax({
-            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : 'http://localhost:8080/profile/startastory', // the url where we want to POST
-            data        : formData, // our data object
-            dataType    : 'json', // what type of data do we expect back from the server
-                        encode          : true
+
+        $(".nexter").click(function(event) {
+            if ($('input[name=title]').val().length == 0) {
+                $(".alert alert-warning").text(" <strong>Warning!</strong>All Fields are Mandatory")
+                $(".row").append("<div class='alert alert-warning'> <strong>Warning!</strong> All Fields are Mandatory</div>")
+                $(".prever").click();
+                setTimeout(function() { $(".alert-warning").remove(); }, 1500);
+            }
         })
-         // using the done promise callback
-            .done(function(data) {
-                // log data to the console so we can see
-                console.log(data); 
-                // here we will handle errors and validation messages
-            });
-        // stop the form from submitting the normal way and refreshing the page
-        event.preventDefault();
-    });
-});
+
+
+    })
     </script>
-
-
+    <script>
+    var quill = new Quill('#editor', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'],
+                ['link', 'blockquote', 'code-block', 'image'],
+                [{ list: 'ordered' }, { list: 'bullet' }]
+            ]
+        },
+        placeholder: 'Compose an epic...',
+        theme: 'snow'
+    });
+    $(document).ready(function() {
+        // process the form
+        $('form').submit(function(event) {
+            var about = document.querySelector('input[name=about]');
+            about.value = JSON.stringify(quill.root.innerHTML);
+            console.log(about.value);
+            // get the form data
+            // there are many ways to get this data using jQuery (you can use the class or id also)
+            var formData = {
+                'category': $('input[name=category]:checked').val(),
+                'title': $('input[name=title]').val(),
+                'body': about.value
+            };
+            // process the form
+            $.ajax({
+                    type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url: 'http://localhost:8080/profile/startastory', // the url where we want to POST
+                    data: formData, // our data object
+                    dataType: 'json', // what type of data do we expect back from the server
+                    encode: true
+                })
+                // using the done promise callback
+                .done(function(data) {
+                    // log data to the console so we can see
+                    console.log(data);
+                    // here we will handle errors and validation messages
+                });
+            // stop the form from submitting the normal way and refreshing the page
+            event.preventDefault();
+        });
+    });
+    </script>
 </body>
-

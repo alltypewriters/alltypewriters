@@ -119,7 +119,16 @@ app.post('/aboutauthor/:id', isLoggedIn, function(req, res) {
 });
 
 
-
+//====================================
+//AUTHOR-ABOUT GET REQUEST=============
+     app.get('/author/:id', function(req, res) {
+         User.find({ "_id": req.params.id }, function(err, user) {
+             if (err) throw err;
+             else {
+                 res.json(user);
+             }
+ });
+ });
 
 
 
@@ -169,6 +178,7 @@ app.post('/aboutauthor/:id', isLoggedIn, function(req, res) {
              var author = req.user.local.name;
          }
          var author_about=req.user.about;
+         var author_id=req.user._id;
         if (req.user.facebook.name) {
              var author_image = req.user.facebook.photo;
          } 
@@ -181,8 +191,8 @@ app.post('/aboutauthor/:id', isLoggedIn, function(req, res) {
              title: title,
              body: body,
              author: author,
+             author_id: author_id,
              created_at: created_at,
-             author_about: author_about,
              author_image: author_image
          });
          // save the story
@@ -329,6 +339,26 @@ app.post('/aboutauthor/:id', isLoggedIn, function(req, res) {
      // ================================================
      // This needs to be changed, not efficient
      // =================================================
+     app.get('/profile/mystory/:id', function(req, res) {
+         Story.find({ "_id": req.params.id }, function(err, story) {
+             if (err) throw err;
+             res.render('story.ejs', {
+                 title: story[0].title,
+                 body: story[0].body,
+                 author: story[0].author,
+                 category: story[0].category,
+                 user: req.user,
+                 date: story[0].created_at,
+                 id: story[0]._id,
+                 comments: story[0].comments,
+                 likes: story[0].likes,
+                 author_id: story[0].author_id,
+                 author_image: story[0].author_image
+
+             });
+         });
+     });
+
      app.get('/profile/unsungheroes/:id', function(req, res) {
          Story.find({ "_id": req.params.id }, function(err, story) {
              if (err) throw err;
@@ -342,7 +372,7 @@ app.post('/aboutauthor/:id', isLoggedIn, function(req, res) {
                  id: story[0]._id,
                  comments: story[0].comments,
                  likes: story[0].likes,
-                 author_about: story[0].author_about,
+                 author_id: story[0].author_id,
                  author_image: story[0].author_image
 
              });
@@ -365,7 +395,7 @@ app.post('/aboutauthor/:id', isLoggedIn, function(req, res) {
                  id: story[0]._id,
                  comments: story[0].comments,
                  likes: story[0].likes,
-                 author_about: story[0].author_about,
+                 author_id: story[0].author_id,
                  author_image: story[0].author_image
              });
          });
@@ -383,7 +413,7 @@ app.post('/aboutauthor/:id', isLoggedIn, function(req, res) {
                  id: story[0]._id,
                  comments: story[0].comments,
                  likes: story[0].likes,
-                 author_about: story[0].author_about,
+                 author_id: story[0].author_id,
                  author_image: story[0].author_image
              });
          });

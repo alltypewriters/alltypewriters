@@ -5,6 +5,7 @@ var storySchema = mongoose.Schema({
     title: String,
     body: String,
     author: String,
+    author_id: String,
     author_about:String,
     author_image: String,
     created_at: Date,

@@ -1,17 +1,32 @@
-.col-md-4 {
+
+.col-lg-4 {
     margin-top: 30px;
     padding-bottom: 10px;
     border: 1px solid #e8e8e8;
     box-shadow: 0 0 10px #e8e8e8;
-    margin-left: 150px;
-
-    height: 400px;
+    height: 450px;
     display: block;
     background-color:white;
+    margin-right: 50px;
+    margin-left: 100px;
 }
 
 .mystory {
     padding: 0px 0px 0px 0px;
+}
+
+.col-lg-4 .btn-holly {
+    background: #2c3e50;
+    border: 1px solid #f0f0f0;
+    border-radius: 20px;
+    color: white;
+
+}
+
+.col-lg-4 .btn-holly:hover {
+    background: #18bc9c;
+    border-color: #DFE9EC;
+    color: white;
 }
 
 .col-md-4 .btn-holly {
@@ -19,6 +34,7 @@
     border: 1px solid #f0f0f0;
     border-radius: 20px;
     color: white;
+    
 }
 
 .col-md-4 .btn-holly:hover {

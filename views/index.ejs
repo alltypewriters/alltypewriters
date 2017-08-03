@@ -1,47 +1,107 @@
-
 <html lang="en">
 <style>
-    header {
-    background-image:url('assets/img/library.jpg');
-    background-size:     cover;                      
-    background-repeat:   no-repeat;
-    background-position: center center; 
-    }
-    #trending{
+header {
+    background-image: url('assets/img/library.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding-top: 300px;
+    padding-bottom: 150px;
+}
 
-        text-align: center;
+#trending {
+
+    text-align: center;
+}
+
+#SiteName {
+    font-size: 55px;
+    color: white;
+    font-family: 'Merriweather', serif;
+}
+
+#TrendingHeader {
+    font-size: 40px;
+    color: black;
+    font-family: 'Oswald', sans-serif;
+}
+
+
+
+/* DEMO-SPECIFIC STYLES */
+
+.typewriter p {
+    color: white;
+    font-size: 25px;
+    font-family: 'Bellefair', serif;
+    color: #fff;
+    font-family: monospace;
+    overflow: hidden;
+    /* Ensures the content is not revealed until the animation */
+    white-space: nowrap;
+    /* Keeps the content on a single line */
+    margin: 0 auto;
+    /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em;
+    /* Adjust as needed */
+    animation: typing 10s steps(40, end),
+    blink-caret .5s step-end infinite;
+}
+
+
+
+/* The typing effect */
+
+@keyframes typing {
+    from {
+        width: 0
     }
-    </style>
+    to {
+        width: 100%
+    }
+}
+
+
+
+/* The typewriter cursor effect */
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent
+    }
+    50% {
+        border-color: orange
+    }
+}
+</style>
+
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>All TYPE WRITERS</title>
-
     <!-- Bootstrap Core CSS -->
-    
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css"> <!-- load bootstrap css -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css" type="text/css"> <!-- load bootstrap-theme css -->
-
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
+    <!-- load bootstrap css -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css" type="text/css">
+    <!-- load bootstrap-theme css -->
     <!-- Theme CSS -->
     <link href="index/css/freelancer.css" rel="stylesheet">
     <link rel="stylesheet" href="layout.css" type="text/css">
-
     <!-- Custom Fonts -->
     <link href="index/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
 </head>
 
 <body id="page-top" class="index">
-
-<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
-
+    <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
@@ -52,7 +112,6 @@
                 </button>
                 <a class="navbar-brand" href="#page-top">All Type Writers</a>
             </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
@@ -60,13 +119,11 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        
-                <li><a href="" data-toggle="modal" data-target="#modal-login"> Login</a></li>
+                        <li><a href="" data-toggle="modal" data-target="#modal-login"> Login</a></li>
                     </li>
                     <li class="page-scroll">
                         <li><a href="" data-toggle="modal" data-target="#modal-signup">Register</a></li>
                     </li>
-                    
                     <li class="page-scroll">
                         <li><a href="#about">About</a></li>
                     </li>
@@ -76,200 +133,57 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-
     <!-- Header -->
     <header>
-        <div class="container" id="maincontent" tabindex="-1">
-            <div class="row">
-                <div class="col-lg-12">
-                    
-                    <div class="intro-text">
-                        <h1 class="name">ALL TYPE WRITERS</h1>
-                        <br><br><br><br><br><br>
-                        <span class="skills">Everyone you know including you carries around an incredible story inside them, so come and share !</span>
-                    </div>
-                </div>
-            </div>
+        <div class="container-fluid first_box">
+            <p id="SiteName">All Type Writers</p>
+            <br>
+            <span class="typewriter">
+                <p>Share Your Story...</p>
+            </span>
         </div>
     </header>
-    
-
     <!-- Top Stories Section -->
     <section id="trending">
-        
-            <div class="container mystory"></div>
-        
-                </section>
-    <!--Modal Login Popup-->
-    <% if (message.length > 0) { %>
-    <div class="modal fade" id="modal-popup" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                        </button>
-          <h3 class="modal-title" id="modal-register-label">Please Note :)</h3>
-        </div>
-        <div class="modal-body">
-        
-                 <div class="alert alert-danger fade in"><%= message %></div>
-              
-
-        </div>
-      </div>
-    </div>  
-  </div> <% } %>  
-  <!--Modal SignupPopup-->
-    <% if (message1.length > 0) { %>
-    <div class="modal fade" id="modal-popup" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                        </button>
-          <h3 class="modal-title" id="modal-register-label">Please Note :(</h3>
-        </div>
-        <div class="modal-body">
-        
-                 <div class="alert alert-danger fade in"><%= message1 %></div>
-              
-
-        </div>
-      </div>
-    </div>  
-  </div> <% } %>  
-
-     <!--Login-Modal-->
-         <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
-    <div class="modal-dialog modal-sm"> 
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                        </button>
-          <h3 class="modal-title" id="modal-register-label">Login</h3>
-        </div>
-        <div class="modal-body">     
-
-          <form action="/login" method="post">
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" name="email" required>
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-block" id="loginButton">Login</button>
-        <a href="/auth/facebook" class="btn btn-primary btn-block"><span class="fa fa-facebook"></span> Facebook</a>
-
-        <a href="/auth/google" class="btn btn-danger btn-block"><span class="fa fa-google-plus"></span> Google</a>
-</form>
-        </div>
-      </div>
-    </div>
-  
-  </div>
-    
-
-  <!--Modal-Signup-->
-  
-  <div class="modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                        </button>
-          <h3 class="modal-title" id="modal-register-label">Register</h3>
-        </div>
-        <div class="modal-body">
-       
-
-          <form action="/signup" method="post">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" name="name" required>
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" name="email" required>
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-block">Register</button>
-    </form>
-        </div>
-      </div>
-    </div>
-  
-  </div>
-
-
-
-
-    
-
-    <!-- About Section -->
-    <section class="success" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>About</h2>
-                    <hr class="star-light">
-                </div>
-            </div>
-            <div class="row">
-                <p> AllTypeWriters is simply about telling a good story. It is about bringing together all types of writers to write about anything under the sun. Everyone you know including you carries around an incredible story inside them. Your story may be anything – a photograph, a painting, a song, or for the traditionalist in you, a poem or a story, or even just an interesting anecdote. You might wish to contribute an essay, an op-ed, an interview, a book/film/play/album/gadget review, or even travelogues, journey experiences. Tell them all here at AllTypeWriters.com ~ “Creatives Welcome”.</p>
-            </div>
-        </div>
+        <p id="TrendingHeader">Trending Stories</p>
+        <div class="container mystory"></div>
+        <img src="assets/img/ajax-loader.gif" class="loaderImage" hidden="true">
     </section>
-
-   
-
     <!-- Footer -->
     <footer class="text-center">
         <div class="footer-above">
             <div class="container">
                 <div class="row">
-                    <div class="footer-col col-md-4">
+                    <div class="footer-col col-xs-4">
                         <h3>Location</h3>
-                        <p>3481 Melrose Place
-                            <br>Beverly Hills, CA 90210</p>
+                        <p>Bengaluru
+                            <br>Karnataka, IND</p>
                     </div>
-                    <div class="footer-col col-md-4">
-                        <h3>Around the Web</h3>
+                    <div class="footer-col col-xs-4">
+                        <h3></h3>
                         <ul class="list-inline">
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><span class="sr-only">Facebook</span><i class="fa fa-fw fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><span class="sr-only">Google Plus</span><i class="fa fa-fw fa-google-plus"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><span class="sr-only">Twitter</span><i class="fa fa-fw fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><span class="sr-only">Linked In</span><i class="fa fa-fw fa-linkedin"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><span class="sr-only">Dribble</span><i class="fa fa-fw fa-dribbble"></i></a>
-                            </li>
+                        <li><p><a href="#">About</a></p></li>
+                        <li><p><a href="#"> Our Team</a></p></li>
+                        <li><p><a href="#"> Privacy</a></p></li>
+                        <li><p><a href="#">Terms and Conditions</a></p></li>
                         </ul>
                     </div>
-                    <div class="footer-col col-md-4">
-                        <h3>About Freelancer</h3>
-                        <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+                    <div class="footer-col col-xs-4">
+                        <h3>SOCIAL</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://www.facebook.com/ReadWriteCircle/" class="btn-social btn-outline" target="_blank"><span class="sr-only">Facebook</span><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://plus.google.com/110254033474092974004" class="btn-social btn-outline" target="_blank"><span class="sr-only">Google Plus</span><i class="fa fa-fw fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/AllTypewriters" class="btn-social btn-outline" target="_blank"><span class="sr-only">Twitter</span><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/all_type_writers/?hl=en" class="btn-social btn-outline" target="_blank"><span class="sr-only">Instagram</span><i class="fa fa-fw fa-instagram"></i></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -278,84 +192,172 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        Copyright &copy; Your Website 2016
+                        &copy; AllTypeWriters 2017
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
-        <a class="btn btn-primary" href="#page-top">
+    <!--Modal Login Popup-->
+    <% if (message.length > 0) { %>
+        <div class="modal fade" id="modal-popup" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h3 class="modal-title" id="modal-register-label">Please Note :)</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger fade in">
+                            <%= message %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+            <!--Modal SignupPopup-->
+            <% if (message1.length > 0) { %>
+                <div class="modal fade" id="modal-popup" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                </button>
+                                <h3 class="modal-title" id="modal-register-label">Please Note :(</h3>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-danger fade in">
+                                    <%= message1 %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+                    <!--Login-Modal-->
+                    <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">
+                                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                    </button>
+                                    <h3 class="modal-title" id="modal-register-label">Login</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/login" method="post">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="text" class="form-control" name="email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Password</label>
+                                            <input type="password" class="form-control" name="password" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block" id="loginButton">Login</button>
+                                        <a href="/auth/facebook" class="btn btn-primary btn-block"><span class="fa fa-facebook"></span> Facebook</a>
+                                        <a href="/auth/google" class="btn btn-danger btn-block"><span class="fa fa-google-plus"></span> Google</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Modal-Signup-->
+                    <div class="modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">
+                                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                    </button>
+                                    <h3 class="modal-title" id="modal-register-label">Register</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/signup" method="post">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input type="text" class="form-control" name="name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="text" class="form-control" name="email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Password</label>
+                                            <input type="password" class="form-control" name="password" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+                    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+                        <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>
-    </div>
+                    </div>
+                    <!-- jQuery -->
+                    <script src="assets/js/jquery-3.2.1.js"></script>
+                    <!-- Bootstrap Core JavaScript -->
+                    <script src="bootstrap/js/bootstrap.min.js"></script>
+                    <!-- Plugin JavaScript -->
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+                    <!-- Contact Form JavaScript -->
+                    <script src="index/js/jqBootstrapValidation.js"></script>
+                    <script src="index/js/contact_me.js"></script>
+                    <!-- Theme JavaScript -->
+                    <script src="index/js/freelancer.min.js"></script>
+                    <script>
+                    $(document).ready(function() {
 
-    
-    <!-- jQuery -->
-    
-    <script src="assets/js/jquery-3.2.1.js"></script>
+                        $('#modal-popup').modal('show');
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="index/js/jqBootstrapValidation.js"></script>
-    <script src="index/js/contact_me.js"></script>
-
-    <!-- Theme JavaScript -->
-    <script src="index/js/freelancer.min.js"></script>
-    
-<script>
-$(document).ready(function () {
-
-    $('#modal-popup').modal('show');
-
-});
-   /* $("#loginButton").on("click", function(e) {
+                    });
+                    /* $("#loginButton").on("click", function(e) {
     e.preventDefault();
 
     // the rest of your code ...
 });*/
-</script>
-<script>
-       $(document).ready(function() {
-        $.getJSON("http://localhost:8080/trending",
-        function(data){
-            
-            data.forEach(function(val){
-                var html="";
-                var author="";
-                var category="";
-                if(val.verified==false){
-                
-                    
-                    var str=val["body"].slice(1, 250);
-                    html+=str+"...<br>";
-                    author= val["author"]+"<br>";
-                    category=val["category"].toLowerCase().replace(/ /g,'');
-                    console.log(category)
-                    var url="/profile/"+category+"/"+val._id;
+                    </script>
+                    <script>
+                    $(document).ready(function() {
+                        $('.loaderImage').show();
+                        $.getJSON("http://localhost:8080/trending",
+                            function(data) {
+                                $('.loaderImage').hide();
+
+                                data.forEach(function(val) {
+                                    var html = "";
+                                    var author = "";
+                                    var category = "";
+                                    if (val.verified == false) {
+
+console.log(val["body"]);
+                                        var str = val["body"].slice(1, 150);
+                                        html += str + "...<br>";
+                                        author = val["author"] + "<br>";
+                                        category = val["category"].toLowerCase().replace(/ /g, '');
+                                        console.log(category)
+                                        var url = "/profile/" + category + "/" + val._id;
 
 
-                    $(".mystory").append("<div class='col-md-4'><br><h4>"+val.title+"</h4><br><p style='color:blue;'>"+html+"</p><br><h5>"+author+"</h5><a href='" +url + "'class='btn btn-holly'>See More</a></div>"); 
-                }
-                                
-            });
-            
-        });
+                                        $(".mystory").append("<div class='col-lg-4'><br><h4>" + val.title + "</h4><br><p style='color:blue;'>" + html + "</p><br><h5>" + author + "</h5><a href='" + url + "'class='btn btn-holly'>See More</a></div>");
+                                    }
+
+                                });
+
+                            });
 
 
 
-    });        
-
-
-</script>
-
+                    });
+                    </script>
 </body>
 
 </html>

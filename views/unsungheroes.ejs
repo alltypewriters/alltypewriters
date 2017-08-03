@@ -92,7 +92,9 @@
 
 <section id="trending">
         
-            <div class="container mystory"></div>
+            <div class="container mystory">
+                <img src="/assets/img/ajax-loader.gif" class="loaderImage" hidden="true">
+            </div>
         
                 </section>
 
@@ -119,22 +121,23 @@
     <!-- Javascript for displaying Unsung-heroes stories-->
 <script>
        $(document).ready(function() {
+        $(".loaderImage").show();
         $.getJSON("http://localhost:8080/verified",
         function(data){
-            
+            $(".loaderImage").hide();
             data.forEach(function(val){
                 var html="";
                 var author="";
                 if(val.verified==false && val.category=="Unsung Heroes"){
                 
                 
-                    var str=val["body"].slice(1, 250);
+                    var str=val["body"].slice(1, 150);
                     html+=str+"...<br>";
                     author= val["author"]+"<br>";
                     var url="/profile/unsungheroes/"+val._id;
 
 
-                     $(".mystory").append("<div class='col-md-4'><br><h4>"+val.title+"</h4><br><p>"+html+"</p><br><h5>"+author+"</h5><a href='" +url + "'class='btn btn-holly'>See More</a></div>"); 
+                     $(".mystory").append("<div class='col-lg-4'><br><h4>"+val.title+"</h4><br><p>"+html+"</p><br><h5>"+author+"</h5><a href='" +url + "'class='btn btn-holly'>See More</a></div>"); 
                 }
                                 
             });
